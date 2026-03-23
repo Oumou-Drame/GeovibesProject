@@ -14,13 +14,13 @@
     </div>
 
      <!--Page de connexion-->
-    <form action="" method="post">
+    <form action="traitement_connexion.php" method="post">
         <h2><span id="titre-style">Accès sécurisé,</span></h2>
         <p>Connectez-vous en tant qu' <span id="roleText">Administrateur</span> pour accéder à votre espace de rédaction.</p>
         <label for="Enail">ADRESSE E-MAIL</label>
-        <input type="text" placeholder="Email" name="email" value="" class="input-actif">
+        <input type="text" placeholder="Email" name="email" value="" class="input-actif" required>
         <label for="Enail">MOT DE PASSE</label>
-        <input type="password" placeholder="Mot de passe" name="password" class="input-actif">
+        <input type="password" placeholder="Mot de passe" name="password" class="input-actif" required>
         <input type="submit" value="Se connecter" id="actif-bouton" class="bouton">
     </form>
 </body>
