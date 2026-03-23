@@ -14,12 +14,12 @@ if(isset($_POST['email'])){
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_name'] = $row['name'];
             $_SESSION['user_role'] = $row['role'];
-            if($_SESSION['user_role'] =="author"){
+            if($_SESSION['user_role'] =="editeur"){
                 echo "Loged successful !";
                 echo"Vous vous etes connectés en tant que editeur <br>";
                 echo'<a href="../pages/editeur.php">Cliquer sur ce lien pour acceder à votre page</a>';
             }
-            if($_SESSION['user_role'] == "admin"){
+            if($_SESSION['user_role'] == "administrateur"){
                 echo"Vous vous etes connectés en tant que admin";
                 echo'<a href="../pages/admin.php">Cliquer sur ce lien pour acceder à votre page</a>';
             }
