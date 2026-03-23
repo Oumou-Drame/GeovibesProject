@@ -33,45 +33,45 @@
             <div class="preference-grille">
                 <!--Afrique-->
                 <label class="preference-choix">
-                    <input type="checkbox" name="preferences" value="afrique" class="input-invisible">
-                    <span><i class="fa-solid fa-earth-africa"></i></span>
-                    <span>Afrique</span>
+                    <input type="checkbox" name="preferences" value="sport" class="input-invisible">
+                    <span><i class="fa-solid fa-baseball"></i></span>
+                    <span>Sport</span>
                 </label>
 
 
                 <!--Europe-->
                 <label class="preference-choix">
-                    <input type="checkbox" name="preferences" value="europe" class="input-invisible">
-                    <span><i class="fa-solid fa-earth-europe"></i></span>
-                    <span>Europe</span>
+                    <input type="checkbox" name="preferences" value="technologie" class="input-invisible">
+                    <span><i class="fa-solid fa-robot"></i></span>
+                    <span>Technologie</span>
                 </label>
 
                 <!--Amerique-->
                 <label class="preference-choix">
-                    <input type="checkbox" name="preferences" value="amerique" class="input-invisible">
-                    <span><i class="fa-solid fa-earth-americas"></i></span>
-                    <span>Amerique</span>
+                    <input type="checkbox" name="preferences" value="politique" class="input-invisible">
+                    <span><i class="fa-solid fa-landmark-dome"></i></span>
+                    <span>Politique</span>
                 </label>
 
                 <!--Asie-->
                 <label class="preference-choix">
-                    <input type="checkbox" name="preferences" value="asie" class="input-invisible">
-                    <span><i class="fa-solid fa-earth-asia"></i></span>
-                    <span>Asie</span>
+                    <input type="checkbox" name="preferences" value="education" class="input-invisible">
+                    <span><i class="fa-solid fa-book-open"></i></span>
+                    <span>Education</span>
                 </label>
 
                 <!--Oceanie-->
                 <label class="preference-choix">
-                    <input type="checkbox" name="preferences" value="oceanie" class="input-invisible">
-                    <span><i class="fa-solid fa-earth-asia"></i></span>
-                    <span>Oceanie</span>
+                    <input type="checkbox" name="preferences" value="culture" class="input-invisible">
+                    <span><i class="fa-solid fa-book-open"></i></span>
+                    <span>Culture</span>
                 </label>
 
                 <!--Tout-->
                 <label class="preference-choix">
-                    <input type="checkbox" name="preferences" value="tout" class="input-invisible">
-                    <span><i class="fa-solid fa-globe"></i></span>
-                    <span>Tout</span>
+                    <input type="checkbox" name="preferences" value="sante" class="input-invisible">
+                    <span><i class="fa-solid fa-briefcase-medical"></i></span>
+                    <span>Sante</span>
                 </label>
             </div>
             <input type="submit" value="Accéder à mon feed " id="bouton">

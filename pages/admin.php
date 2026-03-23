@@ -17,7 +17,7 @@
     </style>
 
     <?php
-    include("../entete.php"); include("../menu.php");
+    include("../includes/entete.php"); include("../includes/menu.php");
     ?>
 
     <main style="min-height: 50vh; padding: 50px; text-align: center; margin-top: 20px;">
@@ -27,7 +27,7 @@
                 <span id="infolineTitre">Que souhaitez-vous faire ?</span>
             </div>
             <div>
-               <a href="liste.php"><button class="btn1">Gérer les utilisateurs</button></a>
+               <a href="../utilisateurs/liste.php"><button class="btn1">Gérer les utilisateurs</button></a>
                <a href=""><button class="btn1">Gérer le contenu</button></a>
                <button></button>
             </div>
@@ -35,7 +35,7 @@
     </main>
 
 <?php
-    include("../footer.php");
+    include("../includes/footer.php");
 ?>
 </body>
 </html>

@@ -1,11 +1,26 @@
 <?php
 session_start();
+include ('../config/database.php');
+
+$requete = "SELECT role FROM utilisateurs";
+$sql = $pdo->prepare($requete);
+$role = $sql->fetch();
+
 
 if (isset($_REQUEST['name']) && !empty(trim($_REQUEST['name']))) {
     $_SESSION['name'] = htmlspecialchars($_REQUEST['name']);
-}else {
+}else if($role == "editeur"){
+
+    $_SESSION['name'] = "Editeur";
+
+}else if($role == "administrateur"){
+
+    $_SESSION['name'] = "Administrateur";
+}
+else {
     $_SESSION['name'] = "Visiteur";
 }
+
 ?>
 
 <!-- style de l'entete -->

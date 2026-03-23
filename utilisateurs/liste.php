@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ('../db.php');
+include ('../config/database.php');
 
 
 $listusers = $pdo->query("SELECT id, nom, prenom, login, role FROM utilisateurs");
@@ -18,8 +18,8 @@ $utilisateurs = $listusers->fetchAll();
   </head>
   <body>
   
-  <?php include ('../entete.php'); ?>
-  <?php include ('../menu.php'); ?>
+  <?php include ('../includes/entete.php'); ?>
+  <?php include ('../includes/menu.php'); ?>
 
   <div style="max-width: 900px; margin: 30px auto; padding: 0 20px;">
   <h1>Gestion des utilisateurs</h1>
@@ -45,6 +45,6 @@ $utilisateurs = $listusers->fetchAll();
    <?php endforeach; ?>
    </table>
     </div>
-   <?php include ('../footer.php'); ?>
+   <?php include ('../includes/footer.php'); ?>
    </body>
 </html>
