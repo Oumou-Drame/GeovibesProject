@@ -4,9 +4,9 @@ include ('../config/database.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-$nom = $_POST['nom'];
-$prenom = $_POST['prenom'];
-$login = $_POST['login'];
+$nom = htmlspecialchars($_POST['nom']);
+$prenom = htmlspecialchars($_POST['prenom']);
+$login = htmlspecialchars($_POST['login']);
 $mdp = $_POST['motdepasse'];
 $role = $_POST['role'];
 
@@ -32,11 +32,10 @@ echo "Utilisateur ajouté!";
     <link rel="stylesheet" href="../style.css">
   </head>
   <body>
-  
-   <?php include ('../includes/menu.php'); ?>
-
-
-
+   <?php
+      include("../includes/enteteAdmin.php");
+      include("../includes/menuAdmin.php");       
+    ?>
   <h1>Ajouter un utilisateur</h1>
   
 
@@ -82,6 +81,4 @@ echo "Utilisateur ajouté!";
 
   }
 </script>
-
-<?php include ('../includes/footer.php'); ?>
 </html>

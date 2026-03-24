@@ -4,7 +4,7 @@ include ('../config/database.php');
 
 $id = intval ($_GET['id'] ?? 0);
 if ($id === 0){
-  header('Location: liste.php');
+  header('Location: ../utilisateurs/liste.php');
   exit;
 }
 
@@ -17,13 +17,13 @@ if ($id === intval ($_SESSION['id'])) {
 $demande = $pdo->prepare("SELECT id FROM utilisateurs WHERE id = ?");
 $demande->execute([$id]);
 if (!$demande->fetch()) {
-  header('Location: liste.php');
+  header('Location: ../utilisateurs/liste.php');
   exit;
 }
 
 $demande = $pdo->prepare("DELETE FROM utilisateurs WHERE id = ?");
 $demande->execute([$id]);
 
-header('Location: liste.php');
+header('Location: ../utilisateurs/liste.php');
 exit;
 ?>

@@ -53,10 +53,11 @@
 </style>
     <nav class="menu">
         <a href="">A LA UNE</a>
-        <a href="#">AFRIQUE</a>
-        <a href="#">EUROPE</a>
-        <a href="#">AMERIQUE</a>
-        <a href="#">ASIE</a>
-        <a href="#">OCEANIE</a>
+        <a href="#">SPORT</a>
+        <a href="#">TECHNOLOGIE</a>
+        <a href="#">POLITIQUE</a>
+        <a href="#">EDUCATION</a>
+        <a href="#">CULTURE</a>
+        <a href="#">SANTE</a>
     </nav>
 

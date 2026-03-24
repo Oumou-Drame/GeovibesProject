@@ -3,7 +3,7 @@ session_start();
 include("../config/database.php");
 
 //preparation des requetes et execution
-$requete = "SELECT * FROM articles";
+$requete = "SELECT * FROM categories";
 $result = $pdo->prepare($requete);
 $result->execute();
 ?>
@@ -21,7 +21,7 @@ $result->execute();
     <?php
 
     if ($_SESSION['role'] === "editeur") {
-        
+
         include("../includes/enteteEditeur.php");
         include("../includes/menuEditeur.php");
 
@@ -29,39 +29,37 @@ $result->execute();
 
         include("../includes/enteteAdmin.php");
         include("../includes/menuAdmin.php");
-    }           
+    }  
     ?>
 
     <div class="header-page">
-        <h2>Gestion des articles</h2>
-        <span>Gérez et publiez le contenu éditorial</span>
+        <h2>Gestion des catégories</h2>
+        <span>Gérez les différentes catégories</span>
     </div>
 
     <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)):?>
     <?php
-        $titre = htmlspecialchars($row['titre']);
-        $categorie = htmlspecialchars($row['categorie']);
+        $nom = htmlspecialchars($row['nomcatg']);
     ?>
     <!--le grand conteneur -->
     <div class="contenu">
 
         <div class="un-contenu">
 
-        <!-- le conteneur pris individuellement -->
-        <div class="contenu-left">
-            <div class="article-icon">✦</div>
-            <!-- la section titre et categorie -->
-            <div class="contenu-first">
-                <h3><?php echo $titre;?></h3>
-                <p class="categorie"><?php echo $categorie;?></p>
+            <!-- le conteneur pris individuellement -->
+            <div class="contenu-left">
+                <div class="article-icon">✦</div>
+                <!-- la section titre et categorie -->
+                <div class="contenu-first">
+                    <h3><?php echo $nom;?></h3>
+                </div>
             </div>
-        </div>
 
-        <!-- la section action-->
-        <div class="actions">
-            <a href="../articles/modifier.php">✎</a>
-            <a href="../articles/supprimer.php">✕</a>
-        </div>
+            <!-- la section action-->
+            <div class="actions">
+                <a href="../articles/modifier.php">✎</a>
+                <a href="../articles/supprimer.php">✕</a>
+            </div>
 
         </div>
     </div>

@@ -1,0 +1,21 @@
+.un-contenu{
+    display: flex;
+    border: 1px solid black;
+    padding: 20px;
+    background-color: white;
+}
+
+.un-contenu .contenu-first{
+    display: flex;
+    flex-direction: column;
+}
+
+.un-contenu .contenu-first h2{
+    color: black;
+    font-family: 'Inherit';
+
+}
+
+.un-contenu .contenu-first p{
+    color: rgba(87, 87, 87, 0.658);
+}

@@ -1,26 +1,8 @@
-<?php
-    session_start();
-    if(!isset($_SESSION['user_id'])){
-        header("Location: ../auth/connexion.php");
-    }
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <style>
-        body {
-            background-color: #f8f9fa; /* Un gris très léger et propre */
-            font-family: 'Inter', system-ui, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
+<style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap');
+    body{
+        font-family: 'Inter', system-ui, sans-serif;
+    }
 
     * {
     margin: 0;
@@ -67,20 +49,13 @@
     .menu a:hover::after, .menu a.active::after {
         width: 60%; /* On ne souligne pas tout le mot, c'est plus chic */
     }
-
-
-    </style>
-
-    <?php
-    include("../includes/enteteEditeur.php");
-    ?>
-
+ 
+</style>
     <nav class="menu">
         <a href="../articles/naviger.php">NAVIGUER</a>
         <a href="../articles/afficher_articles.php">ARTICLES</a>
         <a href="../articles/afficher_categorie.php">CATEGORIE</a>
+        <a href="../utilisateurs/liste.php">UTILISATEUR</a>
         <a href="../auth/deconnexion.php">DECONNEXION</a>
     </nav>
 
-</body>
-</html>

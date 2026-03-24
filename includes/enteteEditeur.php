@@ -1,20 +1,3 @@
-<?php
-session_start();
-include ('../config/database.php');
-
-$requete = "SELECT role FROM utilisateurs";
-$sql = $pdo->prepare($requete);
-$role = $sql->fetch();
-
-
-if (isset($_REQUEST['name']) && !empty(trim($_REQUEST['name']))) {
-    $_SESSION['name'] = htmlspecialchars($_REQUEST['name']);
-}else {
-    $_SESSION['name'] = "Visiteur";
-}
-
-?>
-
 <!-- style de l'entete -->
 <style>
 
@@ -95,7 +78,7 @@ if (isset($_REQUEST['name']) && !empty(trim($_REQUEST['name']))) {
             <p id="logo1">Geo<span class="vibes">Vibes</span></p>
             <p id="texte">L'ACTUALITE MONDIALE</p>
         </div>
-        <p id="texte2">Hello, <span id="styletexte2"><?php echo $_SESSION['name'];?></span></p>
+        <p id="texte2">Hello, <span id="styletexte2"><?php echo "Editeur";?></span></p>
    </header> 
  </div>
  
