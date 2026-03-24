@@ -17,7 +17,7 @@
     </style>
 
     <?php
-    include("../includes/entete.php"); include("../includes/menu.php");
+     include("../includes/menu.php");
     ?>
 
     <main style="min-height: 50vh; padding: 50px; text-align: center; margin-top: 20px;">

@@ -17,8 +17,6 @@ $utilisateurs = $listusers->fetchAll();
     
   </head>
   <body>
-  
-  <?php include ('../includes/entete.php'); ?>
   <?php include ('../includes/menu.php'); ?>
 
   <div style="max-width: 900px; margin: 30px auto; padding: 0 20px;">
@@ -38,8 +36,8 @@ $utilisateurs = $listusers->fetchAll();
     <td><?= htmlspecialchars($user['login'])?></td>
     <td><?= htmlspecialchars($user['role'])?></td>
     <td>
-      <a href="modifier.php?id=<?= $user['id'] ?>">Modifier</a>
-      <a href="supprimer.php?id=<?= $user['id'] ?>"onclick="return confirm(' Vous vous supprimer cet utilisateur ?')">Supprimer</a>
+      <a href="../utilisateurs/modifier.php?id=<?= $user['id'] ?>">Modifier</a>
+      <a href="../utilisateurs/supprimer.php?id=<?= $user['id'] ?>"onclick="return confirm(' Vous vous supprimer cet utilisateur ?')">Supprimer</a>
     </td>
   </tr>
    <?php endforeach; ?>

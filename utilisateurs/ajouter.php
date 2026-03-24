@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ('../db.php');
+include ('../config/database.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -33,8 +33,7 @@ echo "Utilisateur ajouté!";
   </head>
   <body>
   
-   <?php include ('../entete.php'); ?>
-   <?php include ('../menu.php'); ?>
+   <?php include ('../includes/menu.php'); ?>
 
 
 
@@ -84,5 +83,5 @@ echo "Utilisateur ajouté!";
   }
 </script>
 
-<?php include ('../footer.php'); ?>
+<?php include ('../includes/footer.php'); ?>
 </html>

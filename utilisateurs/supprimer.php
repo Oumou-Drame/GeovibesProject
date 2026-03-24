@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ('../db.php');
+include ('../config/database.php');
 
 $id = intval ($_GET['id'] ?? 0);
 if ($id === 0){
