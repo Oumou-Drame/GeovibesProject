@@ -40,7 +40,6 @@ $result->execute();
     <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)):?>
     <?php
         $titre = htmlspecialchars($row['titre']);
-        $id = $row['id'];
         $categorie = htmlspecialchars($row['categorie']);
     ?>
     <!--le grand conteneur -->
@@ -59,10 +58,12 @@ $result->execute();
         </div>
 
         <!-- la section action-->
-        <div class="actions">
-            <a href="../articles/modifier.php">✎</a>
-            <a href="../articles/supprimer.php">✕</a>
-        </div>
+        <?php 
+        $post_id = $row['id'];
+            echo"<a href='../articles/modifier.php?post_id={$post_id}'>modifier</a> <br>";
+            echo"<a href='../articles/supprimer.php?post_id={$post_id}'>supprimer</a> <br>";
+        ?>
+       
 
         </div>
     </div>

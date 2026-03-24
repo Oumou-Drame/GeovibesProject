@@ -5,47 +5,55 @@
 
     $post_id= $_GET['post_id'];
 
-    if(!isset($_SESSION['user_id'])){
+    if(!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ["administrateur", "editeur"])){
         header("Location: ../auth/connexion.php");
+        exit();
+
     }else {
-        if($_SESSION['user_role'] == "administrateur"){
+        if($_SESSION['role'] === "administrateur" || $_SESSION['role'] === "editeur"){
             $sql = "SELECT * from categories";
-            $result = $connexion->query($sql);
+            $result = $pdo->query($sql);
 
             if(!$result){
-                echo"Error {$connexion->error}";
+                echo"Error {$pdo->error}";
             }else {
                     
                if(isset($_POST['submit'])){
-                $title = $_POST['title'];
-                $content = $_POST['content'];
-                $categoryname = $_POST['categoryname'];
-                $name = $_FILES['image']['name'];
-                $name = str_replace(" ", "_", $name);
+
+                $title = htmlspecialchars($_POST['title']);
+                $content = htmlspecialchars($_POST['content']);
+                $categoryname = htmlspecialchars($_POST['categoryname']);
+                $auteur = htmlspecialchars($_POST['auteur']);
+
+                //$name = $_FILES['image']['name'];
+                //$name = str_replace(" ", "_", $name);
                 // enlever caractères spéciaux
-                $name = preg_replace("/[^A-Za-z0-9\._-]/", "", $name);
-                $temp_location = $_FILES['image']['tmp_name'];
-                $our_location = "../images/";
-                if(!empty($name)){
-                    move_uploaded_file($temp_location,$our_location.$name);
-                }
+                //$name = preg_replace("/[^A-Za-z0-9\._-]/", "", $name);
+                //$temp_location = $_FILES['image']['tmp_name'];
+                //$our_location = "../images/";
+                //if(!empty($name)){
+                    //move_uploaded_file($temp_location,$our_location.$name);
+                //}
+
+
                 $sql1 ="SELECT id from categories where name ='$categoryname' ";
-                $result1 = $connexion->query($sql1);
+                $result1 = $pdo->query($sql1);
                 $row = $result1->fetch(PDO::FETCH_ASSOC);
                 if($row){
                     $idforcategory = $row['id'];
                 }
-                $sql2 = "update posts set
-                                        title ='$title',
-                                        contentText='$content',
-                                        categorie_id='$idforcategory',
-                                        image='$name'
+                $sql2 = "update articles set
+                                        titre ='$title',
+                                        contenu='$content',
+                                        categorie='$categoryname',
+                                        auteur='$auteur',
                                         WHERE id='$post_id'";
-                $result2 = $connexion->query($sql2);
+                $result2 = $pdo->query($sql2);
+        
                 if($result2){
                     echo"Successfully updated";
                 }else{
-                    echo"Error! $connexion->error";
+                    echo"Error! $pdo->error";
                 }
                }
             }
@@ -63,14 +71,14 @@
 </head>
 <body>
    <form action="../articles/modifier.php?post_id=<?php echo $post_id; ?>" method="POST" enctype="multipart/form-data">
-        <input type="text" name="title" placeholder ="Give the post title here!" required> <br>
-        <textarea name="content" placeholder="Write your post" required></textarea><br>
+        <input type="text" name="title" placeholder ="Titre de l'article" required> <br>
+        <texterea name="content" placeholder="Contenu de l'article" required></textarea><br>
+        <input name="auteur" placeholder="Auteur de l'article" required></input><br>
         <select name="categoryname">
             <?php  while($row = $result->fetch(PDO::FETCH_ASSOC)){?>
             <option value="<?php echo"{$row['name']}";?>"><?php echo"{$row['name']}";?></option>
             <?php }?>
         </select> <br>
-        <input type="file" required name="image"> <br>
         <input type="submit" name = "submit" value="update post">
     </form>
 </body>
