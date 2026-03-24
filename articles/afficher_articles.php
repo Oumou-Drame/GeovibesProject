@@ -40,6 +40,7 @@ $result->execute();
     <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)):?>
     <?php
         $titre = htmlspecialchars($row['titre']);
+        $id = $row['id'];
         $categorie = htmlspecialchars($row['categorie']);
     ?>
     <!--le grand conteneur -->

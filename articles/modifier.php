@@ -1,10 +1,11 @@
 <?php
     session_start();
-    $user_id =$_SESSION['user_id'];
-    include"../config/database.php";
+    $user_id = $_SESSION['user_id'];
+    include("../config/database.php");
+
     $post_id= $_GET['post_id'];
 
-     if(!isset($_SESSION['user_id'])){
+    if(!isset($_SESSION['user_id'])){
         header("Location: ../auth/connexion.php");
     }else {
         if($_SESSION['user_role'] == "administrateur"){
