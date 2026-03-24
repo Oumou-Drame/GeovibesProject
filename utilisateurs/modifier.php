@@ -102,7 +102,7 @@ if (!empty($_POST)) {
         </label>
         <label>Rôle :
             <select name="role">
-                <?php foreach (['visiteur', 'editeur', 'administrateur'] as $r): ?>
+                <?php foreach (['editeur', 'administrateur'] as $r): ?>
                     <option value="<?= $r ?>" 
                         <?= $utilisateur['role'] === $r ? 'selected' : '' ?>>
                         <?= ucfirst($r) ?>
