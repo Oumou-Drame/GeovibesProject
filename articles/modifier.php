@@ -3,20 +3,18 @@
     $user_id =$_SESSION['user_id'];
     include"../config/database.php";
     $post_id= $_GET['post_id'];
+
      if(!isset($_SESSION['user_id'])){
         header("Location: ../auth/connexion.php");
     }else {
-        if($_SESSION['user_role'] == "author"){
+        if($_SESSION['user_role'] == "administrateur"){
             $sql = "SELECT * from categories";
-            $result = $connexion->query($sql)
+            $result = $connexion->query($sql);
+
             if(!$result){
                 echo"Error {$connexion->error}";
             }else {
-                    //while($row = mysqli_fetch_assoc($result)){
-                    //echo"{$row['id']}";
-                    //echo"<br>";
-                    //echo"{$row['name']}";
-               // }
+                    
                if(isset($_POST['submit'])){
                 $title = $_POST['title'];
                 $content = $_POST['content'];
@@ -31,7 +29,7 @@
                     move_uploaded_file($temp_location,$our_location.$name);
                 }
                 $sql1 ="SELECT id from categories where name ='$categoryname' ";
-                $result1 = $connexion->query($sql1)
+                $result1 = $connexion->query($sql1);
                 $row = $result1->fetch(PDO::FETCH_ASSOC);
                 if($row){
                     $idforcategory = $row['id'];
@@ -42,7 +40,7 @@
                                         categorie_id='$idforcategory',
                                         image='$name'
                                         WHERE id='$post_id'";
-                $result2 = $connexion->query($sql2)
+                $result2 = $connexion->query($sql2);
                 if($result2){
                     echo"Successfully updated";
                 }else{
