@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="editeur.css">
 </head>
 <body>
     <style>
@@ -73,14 +74,13 @@
 
     <?php
     include("../includes/enteteEditeur.php");
+    include("../includes/menuEditeur.php");
     ?>
 
-    <nav class="menu">
-        <a href="../articles/naviger.php">NAVIGUER</a>
-        <a href="../articles/afficher_articles.php">ARTICLES</a>
-        <a href="../articles/afficher_categorie.php">CATEGORIE</a>
-        <a href="../auth/deconnexion.php">DECONNEXION</a>
-    </nav>
+    <main>
+        <h2>Bienvenue sur votre page Editeur <?php echo $_SESSION['login'];?></h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, harum. Sit neque distinctio, non labore sunt voluptatum nemo quia reiciendis veniam, repellat quae eaque autem, reprehenderit quaerat qui perspiciatis veritatis!</p>
+    </main>
 
 </body>
 </html>

@@ -7,7 +7,7 @@
         header("Location: ../auth/connexion.php");
 
     }else {
-        if($_SESSION['role'] === "administrateur" || $_SESSION['role'] === "administrateur"){
+        if($_SESSION['role'] === "editeur" || $_SESSION['role'] === "administrateur"){
 
             $sql = "SELECT * from categories";
             //$result = mysqli_query($connexion,$sql);
@@ -26,6 +26,7 @@
                 $title = $_POST['title'];
                 $content = $_POST['content'];
                 $categoryname = $_POST['categoryname'];
+                $auteur=$_POST['auteur'];
 
                 //$name = $_FILES['image']['name'];
                 //$name = str_replace(" ", "_", $name);
@@ -37,7 +38,7 @@
                     //move_uploaded_file($temp_location,$our_location.$name);
                 //}
 
-                $sql1 ="SELECT id from categories where name ='$categoryname' ";
+                $sql1 ="SELECT id from categories where nomcatg ='$categoryname' ";
                 //$result1 = mysqli_query($pdo,$sql1);
                 $result1 = $pdo->query($sql1);
                 //$row = mysqli_fetch_assoc($result1);
@@ -45,10 +46,9 @@
                 if($row){
                     $idforcategory = $row['id'];
                 }
-                $sql2 ="INSERT INTO articles(titre,contenu,id,categorie,auteur) VALUES
-                ('$title','$content','$user_id','$idforcategory','$name') ";
-                //$result2 = mysqli_query($pdo,$sql2);
-                $result2 = $pdo->query($sql2);
+                $sql2 ="INSERT INTO articles(titre,contenu,categorie,auteur) VALUES(?,?,?,?)";
+                $stmt = $pdo->prepare($sql2);
+                $result2 = $stmt->execute([$title,$content,$categoryname,$auteur]);
                 if($result2){
                     echo"Successfully done";
                 }else{
@@ -74,10 +74,10 @@
         <textarea name="content" placeholder="Contenu de l'article" required></textarea><br>
         <select name="categoryname">
             <?php  while($row = $result->fetch(PDO::FETCH_ASSOC)){?>
-            <option value="<?php echo"{$row['name']}";?>"><?php echo"{$row['name']}";?></option>
+            <option value="<?php echo"{$row['nomcatg']}";?>"><?php echo"{$row['nomcatg']}";?></option>
             <?php }?>
-        </select> <br>
-        <input type="file" required name="image"> <br>
+        </select><br>
+        <input type="text" name="auteur" placeholder="nom de l'auteur" required><br>
         <input type="submit" name = "submit" value="Add Post">
     </form>
 </body>

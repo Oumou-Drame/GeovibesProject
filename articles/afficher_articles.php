@@ -36,7 +36,9 @@ $result->execute();
         <h2>Gestion des articles</h2>
         <span>Gérez et publiez le contenu éditorial</span>
     </div>
-
+    <div>
+        <a href="../articles/ajouter.php">Nouveau Article</a>
+    </div>
     <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)):?>
     <?php
         $titre = htmlspecialchars($row['titre']);
@@ -60,11 +62,12 @@ $result->execute();
         <!-- la section action-->
         <?php 
         $post_id = $row['id'];
-            echo"<a href='../articles/modifier.php?post_id={$post_id}'>modifier</a> <br>";
-            echo"<a href='../articles/supprimer.php?post_id={$post_id}'>supprimer</a> <br>";
+            echo"<div class='actions'>";
+            echo"<a href='../articles/modifier.php?post_id={$post_id}'>✎</a> <br>";
+            echo"<a href='../articles/supprimer.php?post_id={$post_id}'>✕</a> <br>";
+            echo"</div>";
         ?>
-       
-
+        
         </div>
     </div>
     

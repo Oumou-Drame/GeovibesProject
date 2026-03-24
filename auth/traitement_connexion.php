@@ -23,7 +23,9 @@ if(isset($_POST['login']) && isset($_POST['password']) && !empty($_POST['login']
             //on recupere les donnees dans des variables de sessions
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['nom'] = $user['nom'];
+            $_SESSION['prenom'] = $user['prenom'];
             $_SESSION['role'] = $user['role'];
+            $_SESSION['login'] = $user['login'];
 
             if ($_SESSION['role'] == "administrateur") {
                 header("Location: ../pages/admin.php");

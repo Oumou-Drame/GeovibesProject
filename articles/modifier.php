@@ -36,7 +36,7 @@
                 //}
 
 
-                $sql1 ="SELECT id from categories where name ='$categoryname' ";
+                $sql1 ="SELECT id from categories where nomcatg ='$categoryname' ";
                 $result1 = $pdo->query($sql1);
                 $row = $result1->fetch(PDO::FETCH_ASSOC);
                 if($row){
@@ -47,6 +47,7 @@
                                         contenu='$content',
                                         categorie='$categoryname',
                                         auteur='$auteur',
+                                        date_publication = NOW()
                                         WHERE id='$post_id'";
                 $result2 = $pdo->query($sql2);
         
@@ -72,11 +73,11 @@
 <body>
    <form action="../articles/modifier.php?post_id=<?php echo $post_id; ?>" method="POST" enctype="multipart/form-data">
         <input type="text" name="title" placeholder ="Titre de l'article" required> <br>
-        <texterea name="content" placeholder="Contenu de l'article" required></textarea><br>
+        <textarea name="content" placeholder="Contenu de l'article" required></textarea><br>
         <input name="auteur" placeholder="Auteur de l'article" required></input><br>
         <select name="categoryname">
             <?php  while($row = $result->fetch(PDO::FETCH_ASSOC)){?>
-            <option value="<?php echo"{$row['name']}";?>"><?php echo"{$row['name']}";?></option>
+            <option value="<?php echo"{$row['nomcatg']}";?>"><?php echo"{$row['nomcatg']}";?></option>
             <?php }?>
         </select> <br>
         <input type="submit" name = "submit" value="update post">
