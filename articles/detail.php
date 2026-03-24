@@ -56,20 +56,6 @@ $result = $demande->fetchAll();
 
 </div>
 
-<script>
-function Article(bouton) {
-    const article = bouton.closest('.article');
-    const details = article.querySelector('.details');
-
-    if (details.style.display === 'none' || details.style.display === '') {
-        details.style.display = 'block';
-        bouton.textContent = '-';
-    } else {
-        details.style.display = 'none';
-        bouton.textContent = '+';
-    }
-}
-</script>
 
 <?php include('../footer.php'); ?>
 
