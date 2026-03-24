@@ -7,7 +7,8 @@
     }else {
         if($_SESSION['user_role'] == "author"){
             $sql = "SELECT * from categories";
-            $result = mysqli_query($connexion,$sql);
+            //$result = mysqli_query($connexion,$sql);
+            $result = $connexion->query($sql);
             if(!$result){
                 echo"Error {$connexion->error}";
             }else {
@@ -30,14 +31,17 @@
                     move_uploaded_file($temp_location,$our_location.$name);
                 }
                 $sql1 ="SELECT id from categories where name ='$categoryname' ";
-                $result1 = mysqli_query($connexion,$sql1);
-                if($result1 ->num_rows>0){
-                    $row = mysqli_fetch_assoc($result1);
+                //$result1 = mysqli_query($connexion,$sql1);
+                $result1 = $connexion->query($sql1);
+                //$row = mysqli_fetch_assoc($result1);
+                $row = $result1->fetch(PDO::FETCH_ASSOC);
+                if($row){
                     $idforcategory = $row['id'];
                 }
                 $sql2 ="INSERT INTO posts(title,contentText,author_id,categorie_id,image) VALUES
                 ('$title','$content','$user_id','$idforcategory','$name') ";
-                $result2 = mysqli_query($connexion,$sql2);
+                //$result2 = mysqli_query($connexion,$sql2);
+                $result2 = $connexion->query($sql2);
                 if($result2){
                     echo"Successfully done";
                 }else{
@@ -46,7 +50,7 @@
                }
             }
         }else {
-            header("Location: dashboard.php");
+            header("Location: ../auth/connexion.php");
         }
     }
 ?>
@@ -62,7 +66,7 @@
         <input type="text" name="title" placeholder ="Give the post title here!" required> <br>
         <textarea name="content" placeholder="Write your post" required></textarea><br>
         <select name="categoryname">
-            <?php  while($row = mysqli_fetch_assoc($result)){?>
+            <?php  while($row = $result->fetch(PDO::FETCH_ASSOC)){?>
             <option value="<?php echo"{$row['name']}";?>"><?php echo"{$row['name']}";?></option>
             <?php }?>
         </select> <br>
