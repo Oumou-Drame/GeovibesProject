@@ -2,13 +2,13 @@
 session_start();
 include"../config/database.php";
 $sql = "SELECT * FROM posts";
-$result = mysqli_query($connexion,$sql);
+$result = $connexion->query($sql);
  echo'
    <ul>
         <li><a href="../pages/editeur.php">Retour à la page editeur</a></li>
     </ul>';
 
-while($row = mysqli_fetch_assoc($result)){
+while($row = $result->fetch(PDO::FETCH_ASSOC) ){
     echo"{$row['title']} <br>"; 
     echo"{$row['contentText']} <br>";
     echo"<img src='../images/{$row['image']}'> <br>";
