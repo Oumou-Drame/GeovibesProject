@@ -1,71 +1,44 @@
 <?php
 session_start();
-include("../config/database.php");
+include('../db.php');
 
-//preparation des requetes et execution
-$requete = "SELECT * FROM articles";
-$result = $pdo->prepare($requete);
-$result->execute();
+$listarticles = $pdo->query("SELECT id, titre, Description FROM articles");
+$articles = $listarticles->fetchAll();
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <title>Articles</title>
-    <link rel="stylesheet" href="afficher_articles.css">
-    
+    <title>Liste Articles - GeoVibes</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <?php
 
-    if ($_SESSION['role'] === "editeur") {
-        
-        include("../includes/enteteEditeur.php");
-        include("../includes/menuEditeur.php");
+<?php include('../entete.php'); ?>
+<?php include('../menu.php'); ?>
 
-    }else{
+<div>
+    <h1>Liste Articles</h1>
 
-        include("../includes/enteteAdmin.php");
-        include("../includes/menuAdmin.php");
-    }           
-    ?>
-
-    <div class="header-page">
-        <h2>Gestion des articles</h2>
-        <span>Gérez et publiez le contenu éditorial</span>
+   
+    <div class="articles-grid">
+        <?php foreach ($articles as $article): ?>
+        <div class="article">
+            <h2>
+                
+                <a href="details.php?id=<?= $article['id'] ?>">
+                    <?= htmlspecialchars($article['titre']) ?>
+                </a>
+            </h2>
+            <p><?= htmlspecialchars($article['Description']) ?></p>
+        </div>
+        <?php endforeach; ?>
     </div>
 
-    <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)):?>
-    <?php
-        $titre = htmlspecialchars($row['titre']);
-        $categorie = htmlspecialchars($row['categorie']);
-    ?>
-    <!--le grand conteneur -->
-    <div class="contenu">
+</div>
 
-        <div class="un-contenu">
+<?php include('../footer.php'); ?>
 
-        <!-- le conteneur pris individuellement -->
-        <div class="contenu-left">
-            <div class="article-icon">✦</div>
-            <!-- la section titre et categorie -->
-            <div class="contenu-first">
-                <h3><?php echo $titre;?></h3>
-                <p class="categorie"><?php echo $categorie;?></p>
-            </div>
-        </div>
-
-        <!-- la section action-->
-        <div class="actions">
-            <a href="../articles/modifier.php">✎</a>
-            <a href="../articles/supprimer.php">✕</a>
-        </div>
-
-        </div>
-    </div>
-    
-    <?php endwhile; ?>
 </body>
 </html>
