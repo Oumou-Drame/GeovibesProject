@@ -1,8 +1,7 @@
 <?php
-session_start();
-include('../db.php');
+include('../config/database.php');
 
-$listarticles = $pdo->query("SELECT id, titre, Description FROM articles");
+$listarticles = $pdo->query("SELECT id, titre FROM articles");
 $articles = $listarticles->fetchAll();
 ?>
 
@@ -15,8 +14,8 @@ $articles = $listarticles->fetchAll();
 </head>
 <body>
 
-<?php include('../entete.php'); ?>
-<?php include('../menu.php'); ?>
+<?php include('../includes/entete.php'); ?>
+<?php include('../includes/menu.php'); ?>
 
 <div>
     <h1>Liste Articles</h1>
@@ -27,18 +26,17 @@ $articles = $listarticles->fetchAll();
         <div class="article">
             <h2>
                 
-                <a href="details.php?id=<?= $article['id'] ?>">
+                <a href="detail.php?id=<?= $article['id'] ?>">
                     <?= htmlspecialchars($article['titre']) ?>
                 </a>
             </h2>
-            <p><?= htmlspecialchars($article['Description']) ?></p>
         </div>
         <?php endforeach; ?>
     </div>
 
 </div>
 
-<?php include('../footer.php'); ?>
+<?php include('../includes/footer.php'); ?>
 
 </body>
 </html>

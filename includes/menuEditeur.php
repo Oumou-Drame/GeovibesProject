@@ -54,7 +54,7 @@
     <nav class="menu">
         <a href="../articles/naviger.php">NAVIGUER</a>
         <a href="../articles/afficher_articles.php">ARTICLES</a>
-        <a href="../articles/afficher_categorie.php">CATEGORIE</a>
+        <a href="../categories/afficher.php">CATEGORIE</a>
         <a href="../auth/deconnexion.php">DECONNEXION</a>
     </nav>
 

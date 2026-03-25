@@ -6,6 +6,7 @@ include("../config/database.php");
 $requete = "SELECT * FROM articles";
 $result = $pdo->prepare($requete);
 $result->execute();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,6 +48,7 @@ $result->execute();
     </div>
     <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)):?>
     <?php
+        $id = htmlspecialchars($row['id']);
         $titre = htmlspecialchars($row['titre']);
         $categorie = htmlspecialchars($row['categorie']);
     ?>
@@ -60,7 +62,11 @@ $result->execute();
             <div class="article-icon">✦</div>
             <!-- la section titre et categorie -->
             <div class="contenu-first">
-                <h3><?php echo $titre;?></h3>
+
+                <?php echo "<a href='../articles/detail.php?id={$id}'>
+                    <h3>$titre</h3>
+                </a>";?>
+
                 <p class="categorie"><?php echo $categorie;?></p>
             </div>
         </div>

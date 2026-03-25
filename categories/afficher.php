@@ -14,7 +14,7 @@ $result->execute();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <title>Articles</title>
-    <link rel="stylesheet" href="afficher_articles3.css">
+    <link rel="stylesheet" href="../articles/afficher_articles3.css">
     
 </head>
 <body>
@@ -42,12 +42,13 @@ $result->execute();
             <span>Gérez et publiez les catégories</span>
         </div>
         <div class="header-right">
-            <a href="../articles/ajouter.php"><i class="fa-solid fa-plus"></i> Nouvelle catégorie</a>
+            <a href="../categories/ajouter.php"><i class="fa-solid fa-plus"></i> Nouvelle catégorie</a>
         </div>
     </div>
 
     <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)):?>
     <?php
+        $id_categorie = htmlspecialchars($row['id']);
         $nom = htmlspecialchars($row['nomcatg']);
     ?>
     <!--le grand conteneur -->
@@ -66,8 +67,8 @@ $result->execute();
 
             <!-- la section action-->
             <div class="actions">
-                <a href="../articles/modifier.php">✎</a>
-                <a href="../articles/supprimer.php">✕</a>
+                <?php echo"<a href='../categories/modifier.php?categorie_id={$id_categorie}';>✎</a>"?>
+                <?php echo"<a href='../categories/supprimer.php?categorie_id={$id_categorie}';>✕</a>"?>
             </div>
 
         </div>
