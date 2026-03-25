@@ -1,15 +1,18 @@
 <?php
 session_start();
-include("../config/database.php");
+include('../db.php');
 
 //preparation des requetes et execution
 $requete = "SELECT * FROM articles";
 $result = $pdo->prepare($requete);
 $result->execute();
 
+$listarticles = $pdo->query("SELECT id, titre, Description FROM articles");
+$articles = $listarticles->fetchAll();
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,19 +22,9 @@ $result->execute();
     
 </head>
 <body>
-    <?php
 
-    if ($_SESSION['role'] === "editeur") {
-        
-        include("../includes/enteteEditeur.php");
-        include("../includes/menuEditeur.php");
-
-    }else{
-
-        include("../includes/enteteAdmin.php");
-        include("../includes/menuAdmin.php");
-    }           
-    ?>
+<div>
+    <h1>Liste Articles</h1>
 
     <div class="header-page">
         <div class="header-left">
@@ -54,8 +47,24 @@ $result->execute();
     ?>
     <!--le grand conteneur -->
     <div class="contenu">
+   
+    <div class="articles-grid">
+        <?php foreach ($articles as $article): ?>
+        <div class="article">
+            <h2>
+                
+                <a href="details.php?id=<?= $article['id'] ?>">
+                    <?= htmlspecialchars($article['titre']) ?>
+                </a>
+            </h2>
+            <p><?= htmlspecialchars($article['Description']) ?></p>
+        </div>
+        <?php endforeach; ?>
+    </div>
 
-        <div class="un-contenu">
+</div>
+
+<?php include('../footer.php'); ?>
 
         <!-- le conteneur pris individuellement -->
         <div class="contenu-left">
