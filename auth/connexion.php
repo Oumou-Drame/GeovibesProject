@@ -15,7 +15,7 @@ session_start();
     
     <!--Affichage du message d'erreur s'il y'en a un on verifie avec if-->
     <?php if (isset($_SESSION['message_erreur'])):?>
-        <h3 style="margin-bottom: 10px;"><?php echo $_SESSION['message_erreur'];?></h3>
+        <h3 style="margin-bottom: 25px;"><?php echo $_SESSION['message_erreur'];?></h3>
         <?php unset($_SESSION['message_erreur']);?>
     <?php endif;?>
 

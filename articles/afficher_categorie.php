@@ -14,7 +14,7 @@ $result->execute();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <title>Articles</title>
-    <link rel="stylesheet" href="afficher_articles.css">
+    <link rel="stylesheet" href="afficher_articles3.css">
     
 </head>
 <body>
@@ -33,8 +33,17 @@ $result->execute();
     ?>
 
     <div class="header-page">
-        <h2>Gestion des catégories</h2>
-        <span>Gérez les différentes catégories</span>
+        <div class="header-left">
+            <a href="../pages/editeur.php">
+            <i class="fa-solid fa-arrow-left-long"></i> Retour au menu</a>
+        </div>
+        <div class="hero">
+            <h2>Gestion des catégories</h2>
+            <span>Gérez et publiez les catégories</span>
+        </div>
+        <div class="header-right">
+            <a href="../articles/ajouter.php"><i class="fa-solid fa-plus"></i> Nouvelle catégorie</a>
+        </div>
     </div>
 
     <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)):?>

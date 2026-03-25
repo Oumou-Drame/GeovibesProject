@@ -69,18 +69,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="ajouter_articles.css">
 </head>
 <body>
-   <form action="../articles/modifier.php?post_id=<?php echo $post_id; ?>" method="POST" enctype="multipart/form-data">
-        <input type="text" name="title" placeholder ="Titre de l'article" required> <br>
-        <textarea name="content" placeholder="Contenu de l'article" required></textarea><br>
-        <input name="auteur" placeholder="Auteur de l'article" required></input><br>
-        <select name="categoryname">
-            <?php  while($row = $result->fetch(PDO::FETCH_ASSOC)){?>
-            <option value="<?php echo"{$row['nomcatg']}";?>"><?php echo"{$row['nomcatg']}";?></option>
-            <?php }?>
-        </select> <br>
-        <input type="submit" name = "submit" value="update post">
-    </form>
+     <!-- entete.php -->
+    <div class="header">
+        <header>
+            <div class="maquette">
+                <p id="logo1">Geo<span class="vibes">Vibes</span></p>
+            </div>
+            <a href="../articles/afficher_articles.php" class="lien">Retour au menu</a>
+
+            <?php if ($_SESSION['role'] === "editeur"):?>
+            <p id="texte2">Hello, <span id="styletexte2"><?php echo "Editeur";?></span></p>
+            <?php else:?>
+            <p id="texte2">Hello, <span id="styletexte2"><?php echo "Administrateur";?></span></p>
+            <?php endif;?>
+        </header> 
+    </div>
+
+    <div class="page">
+        <div class="page-header">
+            <h1>Modifier un article</h1>
+        </div>
+        
+        <div class="container">
+            <form action="../articles/modifier_articles.php?post_id=<?php echo $post_id; ?>" method="POST" enctype="multipart/form-data">
+                <div class="contenu-section">
+                    <label for="titre">Titre</label>
+                    <input type="text" name="title" placeholder ="Titre de contenu" required> <br>
+                </div>
+                <div class="contenu-section">
+                    <label for="contenu">Contenu</label>
+                    <textarea name="content" placeholder="Contenu de l'article" required></textarea><br>
+                </div>
+
+                <div class="contenu-section">
+                    <label for="auteur">Auteur</label>
+                    <input type="text" name="auteur" placeholder="nom de l'auteur" required><br>
+                </div>
+
+                <div class="contenu-section">
+                    <label for="categorie">Catégorie du contenu</label>
+                    <select name="categoryname">
+                        <?php  while($row = $result->fetch(PDO::FETCH_ASSOC)){?>
+                        <option value="<?php echo"{$row['nomcatg']}";?>"><?php echo"{$row['nomcatg']}";?></option>
+                        <?php }?>
+                    </select> <br>
+                </div>
+                <input type="submit" name = "submit" value="Mettre à jour l'article" class="bouton">
+            </form>
+        </div>
+    </div>
 </body>
 </html>

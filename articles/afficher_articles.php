@@ -14,7 +14,7 @@ $result->execute();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <title>Articles</title>
-    <link rel="stylesheet" href="afficher_articles.css">
+    <link rel="stylesheet" href="afficher_articles3.css">
     
 </head>
 <body>
@@ -33,11 +33,17 @@ $result->execute();
     ?>
 
     <div class="header-page">
-        <h2>Gestion des articles</h2>
-        <span>Gérez et publiez le contenu éditorial</span>
-    </div>
-    <div>
-        <a href="../articles/ajouter.php">Nouveau Article</a>
+        <div class="header-left">
+            <a href="../pages/editeur.php">
+            <i class="fa-solid fa-arrow-left-long"></i> Retour au menu</a>
+        </div>
+        <div class="hero">
+            <h2>Gestion des articles</h2>
+            <span>Gérez et publiez le contenu éditorial</span>
+        </div>
+        <div class="header-right">
+            <a href="../articles/ajouter_articles.php"><i class="fa-solid fa-plus"></i> Nouveau Article</a>
+        </div>
     </div>
     <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)):?>
     <?php
@@ -63,8 +69,8 @@ $result->execute();
         <?php 
         $post_id = $row['id'];
             echo"<div class='actions'>";
-            echo"<a href='../articles/modifier.php?post_id={$post_id}'>✎</a> <br>";
-            echo"<a href='../articles/supprimer.php?post_id={$post_id}'>✕</a> <br>";
+            echo"<a href='../articles/modifier_articles.php?post_id={$post_id}'>✎</a> <br>";
+            echo"<a href='../articles/supprimer_articles.php?post_id={$post_id}'>✕</a> <br>";
             echo"</div>";
         ?>
         

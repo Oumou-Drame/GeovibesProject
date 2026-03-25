@@ -37,7 +37,7 @@
     #logo1:hover{
         transform: scale(1.02);
     }
-    vibes{
+    .vibes{
         color: rgb(220, 3, 3);
     }
 

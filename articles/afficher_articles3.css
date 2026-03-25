@@ -4,10 +4,49 @@ body {
             padding: 0;
 }
 
+.header-page .header-left a{
+    color: #1a1a1a;
+}
+
+.header-page .header-left a:hover{
+    color: rgba(190, 24, 24, 0.893);
+}
+.header-page .header-right{
+    gap: 5px;
+    border: 1px solid transparent;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(190, 24, 24, 0.893);
+
+}
+
+.header-page .header-right:hover{
+    transform: scale(1.04);
+    background-color: rgba(136, 20, 20, 0.893);
+}
+.header-page .header-right a{
+    color: white;
+    font-weight: 600;
+}
+
 .header-page {
-    max-width: 860px;
+    background-color: #fffefe;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 16px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin: 40px;
-    border-bottom: 1px solid #e5e4e0;
+    gap: 20px;
+}
+
+a{
+    text-decoration: none;
+    
 }
 
 .header-page h2 {

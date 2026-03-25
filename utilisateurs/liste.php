@@ -18,7 +18,8 @@ function initiales(string $nom, string $prenom): string {
   <head>
     <meta charset="UTF-8">
     <title>GeoVibes - Utilisateurs</title>
-    <link rel="stylesheet" href="liste.css">
+    <link rel="stylesheet" href="liste1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     
   </head>
   <body>
@@ -27,17 +28,19 @@ function initiales(string $nom, string $prenom): string {
 
   <div class="page-wrap">
 
-  <div class="header-page">
-    <div class="page-header">
-        <h2>Gestion des utilisateurs</h2>
-        <span>Gérez les utilisateurs de GeoVibes</span>
-
-    </div>
-    <div class="lien">
-        <a href="../utilisateurs/ajouter.php">Ajouter un utilisateur</a>
-    </div>
-  </div>
-    
+    <div class="header-page">
+            <div class="header-left">
+                <a href="../pages/editeur.php">
+                <i class="fa-solid fa-arrow-left-long"></i> Retour au menu</a>
+            </div>
+            <div class="hero">
+                <h2>Gestion des utilisateurs</h2>
+                <span>Gérez les utilisateur de GeoVibes</span>
+            </div>
+            <div class="header-right">
+                <a href="../utilisateurs/ajouter.php"><i class="fa-solid fa-plus"></i> Nouvel utilisateur</a>
+            </div>
+        </div>
 
     <div class="col-header">
         <span>Utilisateur</span>
@@ -46,33 +49,36 @@ function initiales(string $nom, string $prenom): string {
         <span></span>
     </div>
 
-  </div>
+    <div class="user-list">
+        <?php while ($row = $listusers->fetch(PDO::FETCH_ASSOC)):?>
+        <?php
+            $nom = htmlspecialchars($row['nom']);
+            $prenom = htmlspecialchars($row['prenom']);
+            $login = htmlspecialchars($row['login']);
+            $role = htmlspecialchars($row['role']);
+        
+        ?>
+        <!--le grand conteneur -->
+        <div class="user-row">
+                <div class="identite-user">
+                    <div class="initial"><?php echo initiales($nom,$prenom);?></div>
+                    <span class="user-name"><?php echo $prenom." ".$nom;?></span>
+                </div>
+                <span class="login"><?php echo $login;?></span>
+                <span class="role"><?php echo $role;?></span>
 
-  <div class="user-list">
-    <?php while ($row = $listusers->fetch(PDO::FETCH_ASSOC)):?>
-    <?php
-        $nom = htmlspecialchars($row['nom']);
-        $prenom = htmlspecialchars($row['prenom']);
-        $login = htmlspecialchars($row['login']);
-        $role = htmlspecialchars($row['role']);
-      
-    ?>
-    <!--le grand conteneur -->
-    <div class="user-row">
-            <div class="identite-user">
-                <div class="initial"><?php echo initiales($nom,$prenom);?></div>
-                <span class="user-name"><?php echo $prenom." ".$nom;?></span>
-            </div>
-            <span class="login"><?php echo $login;?></span>
-            <span class="role"><?php echo $role;?></span>
-
-          <!-- la section action-->
-          <div class="actions">
-              <a href="../utilisateurs/modifier.php">✎</a>
-              <a href="../utilisateurs/supprimer.php">✕</a>
-          </div> 
+            <!-- la section action-->
+            <div class="actions">
+                <a href="../utilisateurs/modifier.php">✎</a>
+                <a href="../utilisateurs/supprimer.php?id=<?php echo $row['id']; ?>" 
+                onclick="return confirm('Es-tu sûre de vouloir supprimer cet utilisateur ?');" 
+                title="Supprimer">✕</a>
+            </div> 
 
         </div>
-    
-    <?php endwhile; ?>
+        
+        <?php endwhile; ?>
+    </div>
+  </div>
+
 </html>

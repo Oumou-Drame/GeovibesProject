@@ -27,7 +27,7 @@ if(isset($_POST['login']) && isset($_POST['password']) && !empty($_POST['login']
             $_SESSION['role'] = $user['role'];
             $_SESSION['login'] = $user['login'];
 
-            if ($_SESSION['role'] == "administrateur") {
+            if ($_SESSION['role'] === "administrateur") {
                 header("Location: ../pages/admin.php");
                 exit();
 
@@ -38,9 +38,11 @@ if(isset($_POST['login']) && isset($_POST['password']) && !empty($_POST['login']
             }
             
         }else{
+            header("Location: ../auth/connexion.php");
             $_SESSION['message_erreur'] = "Mot de passe ou login incorrect";
         }
    }else{
+        header("Location: ../auth/connexion.php");
         $_SESSION['message_erreur'] = "Identifiant inconnu";
    }
 }

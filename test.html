@@ -1,36 +1,115 @@
+<style>
+    <style>
+:root {
+    --primary-color: #dc0303; /* Votre rouge */
+    --dark-text: #1a1a1a;
+    --light-text: #64748b;
+    --bg-card: #ffffff;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <title>Articles</title>
-</head>
-<body>
-    
-    <div>
+.header-page {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 40px;
+    background: var(--bg-card);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+/* --- Section Gauche (Retour) --- */
+.btn-back {
+    text-decoration: none;
+    color: var(--light-text);
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+}
+
+.btn-back:hover {
+    color: var(--primary-color);
+    transform: translateX(-5px);
+}
+
+/* --- Section Centrale (Titre) --- */
+.hero {
+    text-align: center;
+}
+
+.hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--dark-text);
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    color: var(--light-text);
+    font-weight: 400;
+}
+
+/* --- Section Droite (Bouton Action) --- */
+.btn-primary {
+    text-decoration: none;
+    background-color: var(--dark-text); /* Noir pour le côté chic */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color); /* Devient rouge au survol */
+    transform: translateY(-2px);
+    box-shadow: 0 15px 20px -5px rgba(220, 3, 3, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-page {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 20px;
+    }
+    .header-left, .header-right {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
+</style>
+</style>
+<header class="header-page">
+    <div class="header-left">
+        <a href="../pages/editeur.php" class="btn-back">
+            <i class="fa-solid fa-arrow-left-long"></i> 
+            <span>Retour au menu</span>
+        </a>
+    </div>
+
+    <div class="hero">
         <h2>Gestion des articles</h2>
-        <span>Gérez et publiez le contenu éditorial</span>
+        <span class="subtitle">Gérez et publiez le contenu éditorial</span>
     </div>
-    <!--le grand conteneur -->
-    <div class="contenus">
 
-        <!-- le conteneur pris individuellement -->
-        <div class="un-contenu">
-
-            <!-- la section titre et categorie -->
-            <div class="contenu-first">
-                <h2>Titre<h2>
-                <p>categorie</p>
-            </div>
-
-            <!-- la section action-->
-            <div class="actions">
-                <a href="../articles/modifier.php"><i class="fa-solid fa-pen-to-square"></i></a>
-                <a href="../articles/supprimer.php"><i class="fa-solid fa-trash"></i></a>
-            </div>
-        </div>
+    <div class="header-right">
+        <a href="../articles/ajouter.php" class="btn-primary">
+            <i class="fa-solid fa-plus"></i> Nouveau Article
+        </a>
     </div>
-</body>
-</html>
+</header>
