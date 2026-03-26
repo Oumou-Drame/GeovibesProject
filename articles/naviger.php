@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../config/database.php');
 
 if(isset($_POST['preferences']) && !empty($_POST['preferences'])) {
