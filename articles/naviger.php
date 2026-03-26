@@ -20,7 +20,13 @@ session_start();
     </style>
 
     <?php
-    include("../includes/enteteEditeur.php"); include("../includes/menu.php");
+      
+                if ($_SESSION['role'] === "editeur"){
+                    include("../includes/enteteEditeur.php"); include("../includes/menu.php");
+                }
+                if ($_SESSION['role'] === "administrateur"){
+                    include("../includes/enteteAdmin.php"); include("../includes/menu.php");
+                }
     ?>
 
     <main style="min-height: 50vh; padding: 50px; text-align: center; margin-top: 20px;">
