@@ -1,21 +1,296 @@
-.un-contenu{
-    display: flex;
-    border: 1px solid black;
-    padding: 20px;
-    background-color: white;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap');
+/* ── HERO ── */
+.hero {
+    animation: fadeUp 0.6s 0.2s ease both;
+    background: white;
+    border-bottom: 1px solid rgba(0,0,0,.08);
+    padding: 48px 32px 40px;
 }
+ 
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+ 
+.hero-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    gap: 24px;
+    margin: 0 auto;
+}
+ 
 
-.un-contenu .contenu-first{
+.hero .label {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    gap: 14px;
+    letter-spacing: 2.5px;
+    font-weight: 700;
+    color: red;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+ 
+.hero .label::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background-color: red;
+}
+ 
+.hero .hero-text{
+    font-size: 50px;
+}
+.hero .hero-text h1 {
+    font-family: 'Syne', sans-serif;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+    font-weight: 900;
+    font-size: 100px;
+}
+ 
+.hero h1 .name {
+    background: linear-gradient(90deg, #741108e6, #f01f31);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: -1px; 
+
+}
+ 
+.hero .p {
+    font-size: 14px;
+    color: #5d5d5d;
+    margin-top: 15px;
+    max-width: 420px;
+}
+ 
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    flex-shrink: 0;
+}
+ 
+.hero-right a {
+    color: #f01f31;
+}
+ 
+.date {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #9696967f;
+    margin-bottom: 5px;
+}
+ 
+.preferences-link {
+    margin-top: 6px;
+    align-items: center;
+    width: fit-content;
+    display: inline-flex;
+    text-decoration: none;
+    color: #f01f31;
+    font-weight: 500;
+    gap: 6px;
+    font-size: 13px;
+    border-bottom: 1px solid #f01f31;
+    padding-bottom: 1px;
+    transition: opacity .2s;
+}
+ 
+.preferences-link:hover {
+    opacity: .7;
+    color: #f01f31;
+    border-bottom: 1px solid #f01f31;
+}
+ 
+/* ── SECTION ARTICLES ── */
+.articles-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 32px 56px;
+}
+ 
+.articles-head {
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    display: flex;
+}
+ 
+.articles-head-line {
+    flex: 1;
+    height: 1px;
+    background-color: #666666;
+}
+ 
+.articles-head-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: black;
+}
+ 
+.articles-head-count {
+    color: #8b8a8ae2;
+    font-size: 13px;
+}
+ 
+/* ── GRILLE ── */
+.articles-grille {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    align-items: stretch;
+}
+ 
+/* ── CARTE ── */
+.article-cart {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: white;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    overflow: hidden;
+    transition: border-color .2s, transform .2s;
+    cursor: pointer;
+}
+ 
+.article-cart:hover {
+    border-color: rgba(145, 145, 145, 0.282);
+    transform: translateY(-3px);
+}
+ 
+/* ── FOND ICÔNE ── */
+.article-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    font-size: 38px;
+    flex-shrink: 0;
+}
+ 
+.article-cart:first-child .article-background {
+    height: 190px;
+}
+ 
+/* ── CORPS ── */
+.article-body {
+    padding: 15px;
+    flex-grow: 1; /* pousse le footer vers le bas */
     display: flex;
     flex-direction: column;
 }
-
-.un-contenu .contenu-first h2{
-    color: black;
-    font-family: 'Inherit';
-
+ 
+.nomcategorie {
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+ 
+.titre-article {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+ 
+.article-cart:first-child .titre-article {
+    font-size: 18px;
 }
 
-.un-contenu .contenu-first p{
-    color: rgba(87, 87, 87, 0.658);
+.article-cart:first-child {
+    grid-column: span 2;
 }
+ 
+.description-article {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 14px;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+ 
+/* ── FOOTER CARTE ── */
+.article-foot {
+    padding: 12px 15px 14px;
+    background: #fdfdfd;
+    border-top: 1px solid #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    margin-top: auto;
+}
+ 
+.article-author-date {
+    font-size: 11px;
+    color: #707070;
+}
+ 
+.article-author-date i {
+    margin-right: 4px;
+}
+ 
+.lire {
+    font-size: 11px;
+    color: red;
+    font-weight: 500;
+    letter-spacing: .05em;
+    text-decoration: none;
+}
+ 
+/* ── ÉTAT VIDE ── */
+.articles-empty {
+    text-align: center;
+    padding: 64px 24px;
+    color: var(--muted);
+}
+ 
+.articles-empty i {
+    font-size: 36px;
+    color: var(--light);
+    margin-bottom: 16px;
+    display: block;
+}
+ 
+.articles-empty p {
+    font-size: 15px;
+    margin-bottom: 16px;
+}
+ 
+.articles-empty a {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 13px;
+    padding: 10px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: opacity .2s;
+}
+ 
+.articles-empty a:hover {
+    opacity: .85;
+}
+ 

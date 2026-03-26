@@ -7,7 +7,7 @@ $requete = "SELECT * FROM articles";
 $result = $pdo->prepare($requete);
 $result->execute();
 
-$listarticles = $pdo->query("SELECT id, titre, Description FROM articles");
+$listarticles = $pdo->query("SELECT id, titre FROM articles");
 $articles = $listarticles->fetchAll();
 ?>
 
@@ -40,8 +40,17 @@ $articles = $listarticles->fetchAll();
 
     <div class="header-page">
         <div class="header-left">
-            <a href="../pages/editeur.php">
-            <i class="fa-solid fa-arrow-left-long"></i> Retour au menu</a>
+            <?php
+                if ($_SESSION['role'] === "editeur"){
+                    echo    '<a href="../pages/editeur.php">
+                            <i class="fa-solid fa-arrow-left-long"></i> Retour au menu</a>';
+                }
+                if ($_SESSION['role'] === "administrateur"){
+                    echo    '<a href="../pages/admin.php">
+                            <i class="fa-solid fa-arrow-left-long"></i> Retour au menu</a>';
+                }
+            ?>
+           
         </div>
         <div class="hero">
             <h2>Gestion des articles</h2>
@@ -57,6 +66,7 @@ $articles = $listarticles->fetchAll();
         $id = htmlspecialchars($row['id']);
         $titre = htmlspecialchars($row['titre']);
         $categorie = htmlspecialchars($row['categorie']);
+       
     ?>
 
     <!--le grand conteneur -->
@@ -71,8 +81,9 @@ $articles = $listarticles->fetchAll();
                     <?php echo "<a href='../articles/detail.php?id={$id}'>
                         <h3>$titre</h3>
                     </a>";?>
-
+    
                     <p class="categorie"><?php echo $categorie;?></p>
+                
                 </div>
             </div>
 
@@ -85,6 +96,6 @@ $articles = $listarticles->fetchAll();
         </div>
     </div>
     
-    <?php endwhile; ?>
+    <?php endwhile;?>
 </body>
 </html>

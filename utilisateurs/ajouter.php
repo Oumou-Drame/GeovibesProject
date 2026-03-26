@@ -116,10 +116,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script>
   const formulaireajout = document.getElementById('formulaire');
   formulaireajout.onsubmit = function(event) {
-    let nom = document.getElementById('nom').value();
-    let prenom = document.getElementById('prenom').value();
-    let login = document.getElementById('login').value();
-    let mdp = document.getElementById('mdp').value();
+    let nom = document.getElementById('nom').value;
+    let prenom = document.getElementById('prenom').value;
+    let login = document.getElementById('login').value;
+    let mdp = document.getElementById('mdp').value;
     
     if (nom == "") {
       let message ="Le nom doit être renseingé";

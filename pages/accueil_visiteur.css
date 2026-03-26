@@ -1,0 +1,318 @@
+.hero {
+    animation: fadeUp 0.6s 0.2s ease both;
+    background: white;
+    border-bottom: 1px solid rgba(0,0,0,.08);;
+    padding: 48px 32px 40px;
+}
+ 
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    gap: 24px;
+    margin: 0 auto;
+}
+
+.hero .label{
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    gap: 14px;
+    letter-spacing: 2.5px;
+    font-weight: 700;
+    color: red;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.hero .label::before{
+    content: '';
+    width: 24px;
+    height: 2px;
+    background-color: red;
+}
+
+.hero .hero-text h1{
+    font-family: 'Syne', sans-serif;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+
+.hero h1 .name {
+            background: linear-gradient(90deg,  #741108e6, #f01f31);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+}
+
+.hero .p{
+    font-size: 13px;
+    color: #666666;
+    margin-top: 15px;
+    max-width: 420px;
+
+}
+.hero-right{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.hero-right a{
+    color: #f01f31;
+}
+
+.date{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #9696967f;
+    margin-bottom: 5px;
+}
+
+.hero-right { 
+    text-align: right; 
+    flex-shrink: 0; 
+}
+.preferences-link{
+    display: inline-flex;
+    text-decoration: none;
+    color: #f01f31;
+    gap: 6px;
+    font-size: 12px;
+    border-bottom: 1px solid #f01f31;
+    padding-bottom: 1px;
+    transition: opacity .2s;
+
+}
+
+.preferences-link:hover{ opacity: .7;
+    color: #f01f31;
+ border-bottom: 1px solid #f01f31;}
+
+.articles-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 32px 56px;
+}
+
+ .articles-head{
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    display: flex;
+ }
+
+  .articles-head-line{
+    flex: 1;
+    height: 1px;
+    background-color: #666666;
+  }
+
+  
+.articles-head-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: black;
+}
+
+.articles-head-count{
+    color: #8b8a8ae2;
+    font-size: 13px;
+}
+
+/*
+.articles-grille {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+ 
+    
+    .article-cart:first-child {
+        grid-column: span 2;
+    }
+ 
+        .article-cart {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: border-color .2s, transform .2s;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            height: 100%;   
+        }
+            */
+        .article-cart:hover {
+            border-color: rgba(255, 134, 134, 0.134);
+            transform: translateY(-3px);
+        }
+
+.article-background{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    font-size: 38px;
+    flex-shrink: 0;
+} 
+
+.article-cart:first-child .article-background { height: 190px; }
+ /*
+        .article-body {
+            padding: 16px 18px 8px;             
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+ */
+        .nomcategorie {
+            font-size: 9px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--red);
+            font-weight: 500;
+            margin-bottom: 7px;
+        }
+ 
+        .titre-article {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+ 
+        .article-cart:first-child .titre-article { font-size: 18px; }
+/*
+        .description-article{
+            font-size: 12px;
+            color: #605f5f;
+            line-height: 1.6;
+            margin-bottom: 14px;
+            flex: 1;
+            display: -webkit-box;
+            
+        }
+
+.article-foot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding: 12px 18px 16px; 
+    flex-shrink: 0; 
+}
+*/
+
+.article-author-date {
+    font-size: 11px;
+    color: #707070;
+}
+.article-author-date i { margin-right: 4px; }
+ 
+.lire {
+    font-size: 11px;
+    color: red;
+    font-weight: 500;
+    letter-spacing: .05em;
+}
+
+ /* ── ÉTAT VIDE ── */
+        .articles-empty {
+            text-align: center;
+            padding: 64px 24px;
+            color: var(--muted);
+        }
+        .articles-empty i {
+            font-size: 36px;
+            color: var(--light);
+            margin-bottom: 16px;
+            display: block;
+        }
+        .articles-empty p { font-size: 15px; margin-bottom: 16px; }
+        .articles-empty a {
+            display: inline-block;
+            background: var(--red);
+            color: #fff;
+            font-size: 13px;
+            padding: 10px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: opacity .2s;
+        }
+        .articles-empty a:hover { opacity: .85; }
+ 
+/* 1. La Grille : Propre et alignée */
+.articles-grille {
+    display: grid;
+    /* Crée 3 colonnes égales qui s'adaptent */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 25px;
+    align-items: stretch; /* Force les cartes à avoir la même hauteur */
+}
+
+/* 2. La Carte : Un conteneur solide */
+.article-cart {
+    display: flex;
+    flex-direction: column; /* Aligne les blocs verticalement */
+    height: 100%;           /* Force la carte à prendre toute la hauteur de la ligne */
+    background: white;
+    text-decoration: none;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+
+/* Optionnel : Met en avant le premier article proprement */
+.article-cart:first-child {
+    grid-column: span 2;
+}
+
+/* 3. Le contenu interne : Utilise flex-grow pour pousser le footer en bas
+.article-body {
+    padding: 20px;
+    flex-grow: 1; /* Prend tout l'espace disponible 
+    display: flex;
+    flex-direction: column;
+}
+*/
+
+.description-article {
+    font-size: 14px;
+    color: #555;
+    /* Limite à 3 lignes pour éviter que les cartes soient de tailles différentes */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.article-body {
+    padding: 15px;
+    flex-grow: 1; /* TRÈS IMPORTANT : ce bloc va "pousser" le footer vers le bas */
+}
+
+.article-foot {
+    padding: 15px;
+    background: #fdfdfd;
+    border-top: 1px solid #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Sécurité supplémentaire pour coller au bas */
+}

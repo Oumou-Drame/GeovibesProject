@@ -30,7 +30,7 @@ function initiales(string $nom, string $prenom): string {
 
     <div class="header-page">
             <div class="header-left">
-                <a href="../pages/editeur.php">
+                <a href="../pages/admin.php">
                 <i class="fa-solid fa-arrow-left-long"></i> Retour au menu</a>
             </div>
             <div class="hero">

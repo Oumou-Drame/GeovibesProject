@@ -13,7 +13,7 @@ $result->execute();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <title>Catégories</title>
+    <title>Articles</title>
     <link rel="stylesheet" href="../articles/afficher_articles.css">
     
 </head>
@@ -34,8 +34,16 @@ $result->execute();
 
     <div class="header-page">
         <div class="header-left">
-            <a href="../pages/editeur.php">
-            <i class="fa-solid fa-arrow-left-long"></i> Retour au menu</a>
+            <?php
+                if ($_SESSION['role'] === "editeur"){
+                    echo    '<a href="../pages/editeur.php">
+                            <i class="fa-solid fa-arrow-left-long"></i> Retour au menu</a>';
+                }
+                if ($_SESSION['role'] === "administrateur"){
+                    echo    '<a href="../pages/admin.php">
+                            <i class="fa-solid fa-arrow-left-long"></i> Retour au menu</a>';
+                }
+            ?>
         </div>
         <div class="hero">
             <h2>Gestion des catégories</h2>

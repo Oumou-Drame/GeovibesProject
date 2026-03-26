@@ -33,7 +33,7 @@
             <div class="preference-grille">
                 <!--Afrique-->
                 <label class="preference-choix">
-                    <input type="checkbox" name="preferences" value="sport" class="input-invisible">
+                    <input type="checkbox" name="preferences[]" value="sport" class="input-invisible">
                     <span><i class="fa-solid fa-baseball"></i></span>
                     <span>Sport</span>
                 </label>
@@ -41,35 +41,35 @@
 
                 <!--Europe-->
                 <label class="preference-choix">
-                    <input type="checkbox" name="preferences" value="technologie" class="input-invisible">
+                    <input type="checkbox" name="preferences[]" value="technologie" class="input-invisible">
                     <span><i class="fa-solid fa-robot"></i></span>
                     <span>Technologie</span>
                 </label>
 
                 <!--Amerique-->
                 <label class="preference-choix">
-                    <input type="checkbox" name="preferences" value="politique" class="input-invisible">
+                    <input type="checkbox" name="preferences[]" value="politique" class="input-invisible">
                     <span><i class="fa-solid fa-landmark-dome"></i></span>
                     <span>Politique</span>
                 </label>
 
                 <!--Asie-->
                 <label class="preference-choix">
-                    <input type="checkbox" name="preferences" value="education" class="input-invisible">
+                    <input type="checkbox" name="preferences[]" value="education" class="input-invisible">
                     <span><i class="fa-solid fa-book-open"></i></span>
                     <span>Education</span>
                 </label>
 
                 <!--Oceanie-->
                 <label class="preference-choix">
-                    <input type="checkbox" name="preferences" value="culture" class="input-invisible">
+                    <input type="checkbox" name="preferences[]" value="culture" class="input-invisible">
                     <span><i class="fa-solid fa-book-open"></i></span>
                     <span>Culture</span>
                 </label>
 
                 <!--Tout-->
                 <label class="preference-choix">
-                    <input type="checkbox" name="preferences" value="sante" class="input-invisible">
+                    <input type="checkbox" name="preferences[]" value="sante" class="input-invisible">
                     <span><i class="fa-solid fa-briefcase-medical"></i></span>
                     <span>Sante</span>
                 </label>

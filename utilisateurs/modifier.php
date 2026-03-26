@@ -43,8 +43,9 @@ if (!empty($_POST)) {
 
     if (empty($erreurs)) {
         if (!empty($mdp)) {
+            $mdp_hash = password_hash($mdp, PASSWORD_DEFAULT);
             $stmt = $pdo->prepare("UPDATE utilisateurs SET nom=?, prenom=?, login=?, motdepasse=?, role=? WHERE id=?");
-            $stmt->execute([$nom, $prenom, $login, $mdp, $role, $id]);
+            $stmt->execute([$nom, $prenom, $login, $mdp_hash, $role, $id]);
         } else {
             $stmt = $pdo->prepare("UPDATE utilisateurs SET nom=?, prenom=?, login=?, role=? WHERE id=?");
             $stmt->execute([$nom, $prenom, $login, $role, $id]);

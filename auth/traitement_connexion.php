@@ -3,7 +3,7 @@ session_start();
 include "../config/database.php";
 
 
-if(isset($_POST['login']) && isset($_POST['password']) && !empty($_POST['login']) && !empty($_POST['login'])){
+if(isset($_POST['login']) && isset($_POST['password']) && !empty($_POST['login']) && !empty($_POST['password'])){
 
     $login = htmlspecialchars($_POST['login']);
     $password = $_POST['password'];
@@ -18,7 +18,7 @@ if(isset($_POST['login']) && isset($_POST['password']) && !empty($_POST['login']
    if ($user) {
 
         //on compare le mot de passe actuel avec celui qui est dans la base de donnee
-        if ($user['motdepasse'] == $password) {
+        if (password_verify($password, $user['motdepasse'])) {
 
             //on recupere les donnees dans des variables de sessions
             $_SESSION['user_id'] = $user['id'];
