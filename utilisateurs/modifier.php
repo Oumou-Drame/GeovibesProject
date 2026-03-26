@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../db.php");
+include("../config/database.php");
 
 
 $id = intval($_GET['id'] ?? 0);
@@ -18,7 +18,6 @@ if (!$utilisateur) {
     exit;
 }
 
-$succes = '';
 $erreurs = [];
 
 
@@ -29,20 +28,29 @@ if (!empty($_POST)) {
     $mdp    = trim($_POST['motdepasse'] ?? '');
     $role   = $_POST['role'] ?? '';
 
-    if (empty($nom))    $erreurs[] = "Le nom est obligatoire.";
-    if (empty($prenom)) $erreurs[] = "Le prénom est obligatoire.";
-    if (empty($login))  $erreurs[] = "Le login est obligatoire.";
+    if (empty($nom)){
+        $erreurs[] = "Le nom est obligatoire.";
+        $message_type = "error";
+    }
+    if (empty($prenom)){
+        $erreurs[] = "Le prénom est obligatoire.";
+        $message_type = "error";
+    }
+    if (empty($login)){
+        $erreurs[] = "Le login est obligatoire.";
+        $message_type = "error";
+    }
 
     if (empty($erreurs)) {
         if (!empty($mdp)) {
-            $mdp_hash = password_hash($mdp, PASSWORD_DEFAULT);
-            $stmt = $pdo->prepare("UPDATE utilisateurs SET nom=?, prenom=?, login=?, mot_de_passe=?, role=? WHERE id=?");
-            $stmt->execute([$nom, $prenom, $login, $mdp_hash, $role, $id]);
+            $stmt = $pdo->prepare("UPDATE utilisateurs SET nom=?, prenom=?, login=?, motdepasse=?, role=? WHERE id=?");
+            $stmt->execute([$nom, $prenom, $login, $mdp, $role, $id]);
         } else {
             $stmt = $pdo->prepare("UPDATE utilisateurs SET nom=?, prenom=?, login=?, role=? WHERE id=?");
             $stmt->execute([$nom, $prenom, $login, $role, $id]);
         }
-        $succes = "Utilisateur modifié avec succès !";
+        $message = "Utilisateur modifié avec succès !";
+        $message_type = "success";
 
         // Recharger les infos à jour
         $demande = $pdo->prepare("SELECT * FROM utilisateurs WHERE id = ?");
@@ -56,68 +64,81 @@ if (!empty($_POST)) {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Modification Utilisateur - GeoVibes</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>Modification Utilisateur</title>
+    <link rel="stylesheet" href="../articles/ajouter_articles.css">
 </head>
 <body>
+    <!-- entete.php -->
+    <div class="header">
+        <header>
+            <div class="maquette">
+                <p id="logo1">Geo<span class="vibes">Vibes</span></p>
+            </div>
+            <a href="../utilisateurs/liste.php" class="lien">Retour au menu</a>
 
-<?php include('../entete.php'); ?>
-<?php include('../menu.php'); ?>
-
-<div style="max-width: 500px; margin: 30px auto; padding: 0 20px;">
-
-    <h1 style="text-align:center;">Modifier un utilisateur</h1>
+            <?php if ($_SESSION['role'] === "editeur"):?>
+            <p id="texte2">Hello, <span id="styletexte2"><?php echo "Editeur";?></span></p>
+            <?php else:?>
+            <p id="texte2">Hello, <span id="styletexte2"><?php echo "Administrateur";?></span></p>
+            <?php endif;?>
+        </header> 
+    </div>
 
     <?php if (!empty($erreurs)): ?>
-        <div class="msg-erreur">
-            <ul>
-                <?php foreach ($erreurs as $e): ?>
-                    <li><?= htmlspecialchars($e) ?></li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
+        <?php foreach ($erreurs as $e): ?>
+            <div class="alert <?php echo $message_type;?>">
+                <?php echo $e;?>
+                <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+            </div>
+        <?php endforeach; ?>
     <?php endif; ?>
-
-    <?php if ($succes): ?>
-        <p class="msg-succes"><?= $succes ?></p>
-    <?php endif; ?>
-
     
-    <form action="modifier.php?id=<?= $id ?>" method="POST">
-        <label>Nom :
-            <input type="text" name="nom" 
-                   value="<?= htmlspecialchars($utilisateur['nom']) ?>">
-        </label>
-        <label>Prénom :
-            <input type="text" name="prenom" 
-                   value="<?= htmlspecialchars($utilisateur['prenom']) ?>">
-        </label>
-        <label>Login :
-            <input type="text" name="login" 
-                   value="<?= htmlspecialchars($utilisateur['login']) ?>">
-        </label>
-        <label>Nouveau mot de passe :
-            <input type="password" name="motdepasse" 
-                   placeholder="Laisser vide pour ne pas changer">
-        </label>
-        <label>Rôle :
-            <select name="role">
-                <?php foreach (['editeur', 'administrateur'] as $r): ?>
-                    <option value="<?= $r ?>" 
-                        <?= $utilisateur['role'] === $r ? 'selected' : '' ?>>
-                        <?= ucfirst($r) ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-        </label>
-        <button type="submit">Mettre à jour</button>
-    </form>
+    <?php if(!empty($message)):?>
+    <div class="alert <?php echo $message_type;?>">
+        <?php echo $message;?>
+        <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+      </div>
+    <?php endif;?>
+    <div class="page">
+      <div class="page-header">
+        <h1>Modifier un utilisateur</h1>
+      </div>
+        <div class="container">
+            <form action="modifier.php?id=<?= $id ?>" method="POST">
+                <div class="contenu-section">
+                    <label for="nom">Nom </label>
+                    <input type="text" name="nom" value="<?php echo htmlspecialchars($utilisateur['nom']) ?>">
+                </div>
+            
+                <div class="contenu-section">
+                    <label for="prenom">Prenom</label>
+                    <input type="text" name="prenom" value="<?php echo htmlspecialchars($utilisateur['prenom']) ?>">
+                </div>
 
-    <a href="liste.php">← Retour à la liste</a>
+                <div class="contenu-section">
+                    <label for="login">Login</label>
+                    <input type="text" name="login" value="<?php echo htmlspecialchars($utilisateur['login']) ?>">
+                </div>
 
+                <div class="contenu-section">
+                    <label for="mdp">Nouveau mot de passe</label>
+                    <input type="password" name="motdepasse" placeholder="Laisser vide pour ne pas changer">
+                </div>
+
+                <div class="contenu-section">
+                    <label>Rôle</label>
+                    <select name="role">
+                        <?php foreach (['editeur', 'administrateur'] as $r): ?>
+                            <option value="<?= $r ?>" 
+                                <?= $utilisateur['role'] === $r ? 'selected' : '' ?>>
+                                <?= ucfirst($r) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            <input type="submit" value="Mettre à jour" class="bouton">
+        </form>
+        </div>
 </div>
-
-<?php include('../footer.php'); ?>
-
 </body>
 </html>

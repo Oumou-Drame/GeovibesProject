@@ -13,47 +13,56 @@ $demande->execute([$id]);
 $result = $demande->fetchAll();
 
  }
-
-
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Articles - GeoVibes</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>Detail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="../articles/detail.css">
     </head>
 <body>
 
+    <div class="header">
+        <header>
+            <div class="maquette">
+                <p id="logo1">Geo<span class="vibes">Vibes</span></p>
+            </div>
+            <a href="../articles/afficher_articles.php" class="lien">Retour au menu</a>
 
-<div style="max-width: 900px; margin: 30px auto; padding: 0 20px;">
-
-    <h1>Liste des articles</h1>
+            <?php if ($_SESSION['role'] === "editeur"):?>
+            <p id="texte2">Hello, <span id="styletexte2"><?php echo "Editeur";?></span></p>
+            <?php else:?>
+            <p id="texte2">Hello, <span id="styletexte2"><?php echo "Administrateur";?></span></p>
+            <?php endif;?>
+        </header> 
+    </div>
 
     <?php foreach ($result as $article): ?>
     <div class="article">
-
-        <div class="article-entete">
-            <h2><?= htmlspecialchars($article['titre']) ?></h2>
+        <!--Titre-->
+        <div class="titre">
+            <h1><?php echo htmlspecialchars($article['titre']); ?></h1>
         </div>
 
-        <p>
-            <?= htmlspecialchars($article['contenu']) ?>
-        </p>
-
-        <div class="details" >
-            <p><strong>Contenu :</strong> <?= htmlspecialchars($article['contenu']) ?></p>
-            <p><strong>Auteur :</strong> <?= htmlspecialchars($article['auteur']) ?></p>
-            <p><strong>Date :</strong> <?= $article['date_publication'] ?></p>
-            <p><strong>Catégorie :</strong> <?= htmlspecialchars($article['categorie_nom']) ?></p>
+        <!--Date + auteur-->
+        <div class="auteur-date">
+            <span><i class='fa-regular fa-user'></i> <?php echo htmlspecialchars($article['auteur']); ?></span>
+            <span><i class="fa-solid fa-clock-rotate-left"></i> <?php echo htmlspecialchars($article['date_publication']); ?></span>
         </div>
 
+        <!--divider-->
+        <hr class="divider">
+
+        <p class="description-titre">Resume</p>
+        <p class="description-contenu"><?php echo htmlspecialchars($article['description']); ?></p>
+        <p class="contenu-titre">Contenu</p>
+        <p class="contenu"><?php echo htmlspecialchars($article['contenu']); ?></p>
 
     </div>
     <?php endforeach; ?>
-
-</div>
 
 </body>
 </html>

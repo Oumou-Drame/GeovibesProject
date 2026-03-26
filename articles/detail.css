@@ -1,0 +1,176 @@
+.article {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 48px 28px 56px;
+        }
+
+body {
+    background-color:  #f8f4ef6b;; /* Un gris très léger et propre */
+    margin: 0;
+    padding: 0;
+}
+
+.page-header .page-label{
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    gap: 14px;
+    letter-spacing: 2.5px;
+    font-weight: 800;
+    color: red;
+    text-transform: uppercase;
+}
+
+.page-header .page-label::before{
+    content: '';
+    width: 24px;
+    height: 2px;
+    background-color: red;
+}
+
+.page-header h1{
+    font-family: 'Syne', sans-serif;
+    letter-spacing: -1px;
+    font-weight: 900;
+    color: rgb(185, 4, 4);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+}
+
+.page-header p{
+    margin-bottom: 40px;
+    color: rgba(14, 14, 14, 0.805);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+ .header {
+    background: rgba(255, 255, 255, 0.88);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(123, 122, 122, 0.15);
+    animation: slideDown 0.5s ease both;
+}
+    
+.page-header{
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header{
+        background: rgba(255, 254, 254, 0.8);  
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 60px;
+        font-family: 'Inter', system-ui, sans-serif;
+        border-bottom: 1px solid rgba(123, 122, 122, 0.15);
+    }
+
+    #logo1{
+        font-size: 32px;
+        font-family: 'Playfair Display', serif;
+        font-weight: 800; /*effet gras*/
+        letter-spacing: 0.5px; /*resserré les écritures*/
+
+    }
+
+    #logo1:hover{
+        transform: scale(1.02);
+    }
+    .vibes{
+        color: rgb(220, 3, 3);
+    }
+
+    .lien{
+        display: inline-block;
+        text-decoration: none;
+        color: #1a1a1a;
+        align-items: center;
+        border: 1px solid rgba(0, 0, 0, 0.122);
+        padding: 10px 18px;
+        border-radius: 5px;
+    }
+
+    .lien:hover{
+        color: rgb(220, 3, 3);
+    }
+
+    #texte2{
+        font-size: 18px;
+        margin-top: 20px;
+        color: rgb(220, 3, 3);
+        font-weight: 400;
+
+        
+    }
+    #styletexte2{
+        color: black;
+        font-family: 'Playfair Display', serif;
+        font-weight: 600; /*effet gras*/
+        letter-spacing: 1px;
+    }
+.titre h1{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 35px;
+    font-weight: 500;
+    line-height: 1.15;
+}
+
+.auteur-date{
+    color: #8a7e78;
+    margin-bottom: 30px;
+}
+
+.auteur-date span{
+    margin-right: 12px;
+    font-size: 13px;
+}
+
+.divider{
+    margin-bottom: 36px;
+    border: transparent;
+    border-top: 0.5px solid rgba(26,23,20,.12);
+}
+
+p{
+    margin-bottom: 20px;
+}
+
+.description-titre{
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: red;
+    text-transform: uppercase;
+}
+
+.description-contenu{
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: black;
+    margin-bottom: 45px;
+    border-left: 3px solid red;
+    border-radius: 5px;
+    padding: 20px 24px;
+    background: #fff;
+}
+
+
+.contenu-titre{
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #8a7e78;
+    text-transform: uppercase;
+}
+
+.contenu{
+    font-size: 17px;
+}

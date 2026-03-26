@@ -69,7 +69,7 @@ function initiales(string $nom, string $prenom): string {
 
             <!-- la section action-->
             <div class="actions">
-                <a href="../utilisateurs/modifier.php">✎</a>
+                <a href="../utilisateurs/modifier.php?id=<?php echo $row['id']; ?>">✎</a>
                 <a href="../utilisateurs/supprimer.php?id=<?php echo $row['id']; ?>" 
                 onclick="return confirm('Es-tu sûre de vouloir supprimer cet utilisateur ?');" 
                 title="Supprimer">✕</a>

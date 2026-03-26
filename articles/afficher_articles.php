@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../db.php');
+include('../config/database.php');
 
 //preparation des requetes et execution
 $requete = "SELECT * FROM articles";
@@ -18,13 +18,25 @@ $articles = $listarticles->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <title>Articles</title>
-    <link rel="stylesheet" href="afficher_articles3.css">
+    <link rel="stylesheet" href="afficher_articles.css">
     
 </head>
 <body>
 
 <div>
-    <h1>Liste Articles</h1>
+    <?php
+
+    if ($_SESSION['role'] === "editeur") {
+
+        include("../includes/enteteEditeur.php");
+        include("../includes/menuEditeur.php");
+
+    }else{
+
+        include("../includes/enteteAdmin.php");
+        include("../includes/menuAdmin.php");
+    }  
+    ?>
 
     <div class="header-page">
         <div class="header-left">
@@ -39,56 +51,37 @@ $articles = $listarticles->fetchAll();
             <a href="../articles/ajouter_articles.php"><i class="fa-solid fa-plus"></i> Nouveau Article</a>
         </div>
     </div>
+
     <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)):?>
     <?php
         $id = htmlspecialchars($row['id']);
         $titre = htmlspecialchars($row['titre']);
         $categorie = htmlspecialchars($row['categorie']);
     ?>
+
     <!--le grand conteneur -->
     <div class="contenu">
-   
-    <div class="articles-grid">
-        <?php foreach ($articles as $article): ?>
-        <div class="article">
-            <h2>
-                
-                <a href="details.php?id=<?= $article['id'] ?>">
-                    <?= htmlspecialchars($article['titre']) ?>
-                </a>
-            </h2>
-            <p><?= htmlspecialchars($article['Description']) ?></p>
-        </div>
-        <?php endforeach; ?>
-    </div>
+        <div class="un-contenu">
+             <!-- le conteneur pris individuellement -->
+            <div class="contenu-left">
+                <div class="article-icon">✦</div>
+                <!-- la section titre et categorie -->
+                <div class="contenu-first">
 
-</div>
+                    <?php echo "<a href='../articles/detail.php?id={$id}'>
+                        <h3>$titre</h3>
+                    </a>";?>
 
-<?php include('../footer.php'); ?>
-
-        <!-- le conteneur pris individuellement -->
-        <div class="contenu-left">
-            <div class="article-icon">✦</div>
-            <!-- la section titre et categorie -->
-            <div class="contenu-first">
-
-                <?php echo "<a href='../articles/detail.php?id={$id}'>
-                    <h3>$titre</h3>
-                </a>";?>
-
-                <p class="categorie"><?php echo $categorie;?></p>
+                    <p class="categorie"><?php echo $categorie;?></p>
+                </div>
             </div>
-        </div>
 
-        <!-- la section action-->
-        <?php 
-        $post_id = $row['id'];
-            echo"<div class='actions'>";
-            echo"<a href='../articles/modifier_articles.php?post_id={$post_id}'>✎</a> <br>";
-            echo"<a href='../articles/supprimer_articles.php?post_id={$post_id}'>✕</a> <br>";
-            echo"</div>";
-        ?>
-        
+            <!-- la section action-->
+            <div class="actions">
+                <?php echo"<a href='../categories/modifier.php?id={$id}';>✎</a>"?>
+                <?php echo"<a href='../categories/supprimer.php?id={$id}';>✕</a>"?>
+            </div>       
+        </div>
         </div>
     </div>
     

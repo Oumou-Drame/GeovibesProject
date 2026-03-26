@@ -25,9 +25,11 @@
 
                 $result2 = $pdo->query($sql2);
                 if($result2){
-                    echo"Successfully updated";
+                    $message = "Modification effectuée avec succès";
+                    $message_type = "success";
                 }else{
-                    echo"Error! $pdo->error";
+                    $message = "Error! $pdo->error";
+                    $message_type = "error";
                 }
                }
             }
@@ -42,12 +44,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Modifier - Catégorie</title>
+    <link rel="stylesheet" href="../articles/ajouter_articles.css">
 </head>
 <body>
-    <form action="../categories/modifier.php?categorie_id=<?php echo $categorie_id; ?>" method="POST">
-        <input type="text" name="name" required>
-        <input type="submit" name="submit" value="updateCategory">
-    </form>
+      <div class="header">
+        <header>
+            <div class="maquette">
+                <p id="logo1">Geo<span class="vibes">Vibes</span></p>
+            </div>
+            <a href="../categories/afficher.php" class="lien">Retour au menu</a>
+
+            <?php if ($_SESSION['role'] === "editeur"):?>
+            <p id="texte2">Hello, <span id="styletexte2"><?php echo "Editeur";?></span></p>
+            <?php else:?>
+            <p id="texte2">Hello, <span id="styletexte2"><?php echo "Administrateur";?></span></p>
+            <?php endif;?>
+        </header> 
+    </div>
+
+    <?php if(isset($message) && !empty($message)):?>
+      <div class="alert <?php echo $message_type;?>">
+        <?php echo $message;?>
+        <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+      </div>
+    <?php endif;?>
+
+    <div class="page">
+      <div class="page-header">
+        <h1>Modifier catégorie</h1>
+      </div>
+
+        <form action="../categories/modifier.php?categorie_id=<?php echo $categorie_id; ?>" method="POST">
+            <div class="container">
+                <div class="contenu-section">
+                    <label for="nom">Nom de la categorie</label>
+                    <input type="text" name="name" required>
+                </div>
+                <input type="submit" name="submit" value="Mettre à jour" class="bouton">
+            </div>
+        </form>
+    </div>
 </body>
 </html>

@@ -79,7 +79,7 @@ a{
 }
 
 .un-contenu:hover {
-    border-color: #c8c7c3;
+    border-color: #d3d3d1d4;
 }
 
 .contenu-left{
@@ -107,6 +107,7 @@ a{
     color: #1a1a1a;
     margin-bottom: 4px;
 }
+
 
 .categorie {
     display: inline-block;

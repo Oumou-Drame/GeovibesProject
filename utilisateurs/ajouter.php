@@ -66,7 +66,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <?php if(isset($message) && !empty($message)):?>
-      <div class="alert <?php echo $message_type;?>"><?php echo $message;?></div>
+      <div class="alert <?php echo $message_type;?>">
+        <?php echo $message;?>
         <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
       </div>
     <?php endif;?>

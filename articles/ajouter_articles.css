@@ -175,7 +175,7 @@ label{
     .bouton {
     width: 100%; /* Il prend toute la largeur du conteneur limité */
     padding: 14px;
-    background-color: #1a1a1a; /* Noir chic */
+    background-color: #1a1a1ae6; /* Noir chic */
     color: white;
     border: none;
     border-radius: 12px;
