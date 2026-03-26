@@ -1,3 +1,28 @@
+
+
+ 
+<?php
+session_start();
+include('../db.php');
+
+if(isset() $_POST['preferences']) && !empty($_POST['preferences']) {
+$tab = $_SESSION['choix'];
+$prefs = implode(',', array_fill(0, count($tab), '?'));
+
+$demande = $pdo->prepare("SELECT * FROM articles WHERE nomcatg IN ($prefs)");
+$demande->execute($tab);
+} else {
+ $demande = $pdo->query("SELECT * FROM articles");
+}
+
+$articles = $query->fetchAll();
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +44,18 @@
     <?php
     include("../includes/entete.php"); include("../includes/menu.php");
     ?>
+    
+    <?php if(empty($articles)): ?>
+        <p>Aucun n'article dans cette catégorie</p>
+    <?php else: ?>
+         <?php foreach ($articles as $a): ?>
+            <h3><?=htmlspecialchars($a['titre'])?></h3>
+            <p><?=htmlspecialchars($a['Description'])?></p>
+    <?php endforeach; ?>
+    <?php endif; ?>
 
+    <a href="preferences.php">Modifier mes préférences</a>
+        
     <main style="min-height: 50vh; padding: 50px; text-align: center; margin-top: 20px;">
         <h1>Bienvenue sur votre fil d'actualité</h1>
         <div class="infoline">
