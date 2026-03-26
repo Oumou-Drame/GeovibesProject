@@ -54,7 +54,14 @@ $defaultStyle = ['icon' => '<i class="fa-regular fa-newspaper"></i>', 'bg' => '#
     </style>
 
     <?php
-    include("../includes/entete.php"); include("../includes/menu.php");
+                if ($_SESSION['role'] === "editeur"){
+                    include("../includes/enteteEditeur.php"); include("../includes/menu.php");
+
+                }
+                if ($_SESSION['role'] === "administrateur"){
+                    include("../includes/enteteAdmin.php"); include("../includes/menu.php");
+
+                }
     ?>
     
     <!-- Header section -->
