@@ -98,11 +98,11 @@
         font-size: 14px;
     }
 
-    p:hover{
+    .p:hover{
         color: #dc0303;
         transform: translateX(5px); /* Petit décalage élégant */
     }
-    p{
+    .p{
         color: rgba(4, 4, 4, 0.897);
         margin-top: -2px;
     }
@@ -140,19 +140,19 @@
                 </div>
                 <div class="regions">
                     <h4 id="title">REGIONS</h4>
-                    <p>Afrique</p>
-                    <p>Europe</p>
-                    <p>Asie</p>
-                    <p>Amérique</p>
-                    <p>Océanie</p>
+                    <p class="p">Afrique</p>
+                    <p class="p">Europe</p>
+                    <p class="p">Asie</p>
+                    <p class="p">Amérique</p>
+                    <p class="p">Océanie</p>
                 </div>
                 <div class="rubriques">
                     <h4 id="title">RUBRIQUES</h4>
-                    <p>Politique</p>
-                    <p>Economie</p>
-                    <p>Culture</p>
-                    <p>Sport</p>
-                    <p>Technologie</p>
+                    <p class="p">Politique</p>
+                    <p class="p">Economie</p>
+                    <p class="p">Culture</p>
+                    <p class="p">Sport</p>
+                    <p class="p">Technologie</p>
                 </div>
                 <div class="news">
                     <h4 id="title">NEWSLETTER</h4>

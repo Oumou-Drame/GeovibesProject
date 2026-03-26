@@ -9,7 +9,11 @@ $role = $sql->fetch();
 
 if (isset($_REQUEST['name']) && !empty(trim($_REQUEST['name']))) {
     $_SESSION['name'] = htmlspecialchars($_REQUEST['name']);
-}else {
+}elseif ($_SESSION['role'] === "editeur") {
+    $_SESSION['name'] = "Editeur";
+}elseif ($_SESSION['role'] === "administrateur") {
+    $_SESSION['name'] = "Aministrateur";
+}else{
     $_SESSION['name'] = "Visiteur";
 }
 

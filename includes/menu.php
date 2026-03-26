@@ -1,6 +1,15 @@
+<?php
+include("../config/database.php");
+
+//preparation des requetes et execution
+$requete = "SELECT DISTINCT nomcatg FROM categories ORDER BY nomcatg ASC";
+$requete = $pdo->query($requete);
+$categorie = $requete->fetchall(PDO::FETCH_ASSOC);
+
+?>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap');
-    body{
+    body{ 
         font-family: 'Inter', system-ui, sans-serif;
     }
 
@@ -52,12 +61,39 @@
  
 </style>
     <nav class="menu">
-        <a href="">A LA UNE</a>
-        <a href="#">SPORT</a>
-        <a href="#">TECHNOLOGIE</a>
-        <a href="#">POLITIQUE</a>
-        <a href="#">EDUCATION</a>
-        <a href="#">CULTURE</a>
-        <a href="#">SANTE</a>
+
+        <?php if(isset($_REQUEST['name']) && !empty(trim($_REQUEST['name']) 
+            && $_SESSION['role'] === "editeur")):
+            $_SESSION['name'] = htmlspecialchars($_REQUEST['name']);
+        ?>
+        <a href="../pages/editeur.php">PAGE EDITEUR</a>
+
+        <?php elseif(isset($_REQUEST['name']) && !empty(trim($_REQUEST['name'])) 
+            && $_SESSION['role'] === "administrateur"):
+            $_SESSION['name'] = htmlspecialchars($_REQUEST['name']);
+        ?>
+        <a href="../pages/accueil_page.php">PAGE ADMINISTRATEUR</a>
+
+        <?php elseif($_SESSION['role'] === "editeur"):?>
+        <a href="../pages/editeur.php">PAGE EDITEUR</a>
+
+        <?php elseif($_SESSION['role'] === "administrateur"):?>
+        <a href="../pages/admin.php">PAGE ADMINISTRATEUR</a>
+
+        <?php elseif(isset($_REQUEST['name']) && !empty(trim($_REQUEST['name']))):
+            $_SESSION['name'] = htmlspecialchars($_REQUEST['name']);
+        ?>
+        <a href="../pages/accueil_page.php">RETOUR</a>
+        
+        <?php else:?>
+        <a href="../pages/accueil_page.php">RETOUR</a>
+
+        <?php endif;?>
+
+        <?php foreach ($categorie as $cat):
+            $nom_cat = $cat['nomcatg'];
+        ?>
+        <a href="#"><?php echo mb_strtoupper($nom_cat);?></a>
+        <?php endforeach;?>
     </nav>
 

@@ -78,7 +78,7 @@ $articles = $listarticles->fetchAll();
                 <!-- la section titre et categorie -->
                 <div class="contenu-first">
 
-                    <?php echo "<a href='../articles/detail.php?id={$id}'>
+                    <?php echo "<a href='../../articles/detail.php?id={$id}'>
                         <h3>$titre</h3>
                     </a>";?>
     
