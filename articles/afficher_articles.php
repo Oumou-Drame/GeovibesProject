@@ -89,8 +89,8 @@ $articles = $listarticles->fetchAll();
 
             <!-- la section action-->
             <div class="actions">
-                <?php echo"<a href='../categories/modifier.php?id={$id}';>✎</a>"?>
-                <?php echo"<a href='../categories/supprimer.php?id={$id}';>✕</a>"?>
+                <?php echo"<a href='../articles/modifier.php?id={$id}';>✎</a>"?>
+                <?php echo"<a href='../articles/supprimer.php?id={$id}';>✕</a>"?>
             </div>       
         </div>
         </div>
